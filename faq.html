@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQs — Lysulin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: { 50:'#f0faf6',100:'#d8f2e8',200:'#aee4cf',300:'#76cfaf',400:'#3db48a',500:'#1f9a70',600:'#167c59',700:'#126349',800:'#0e4e3a',900:'#0b3e2e' } },
+          fontFamily: { sans:['Inter','sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Inter',sans-serif;background:#fff;color:#0f172a;overflow-x:hidden}
+    .glass{background:rgba(255,255,255,0.08);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.15)}
+    .btn-primary{background:linear-gradient(135deg,#1f9a70 0%,#0d9488 100%);color:#fff;font-weight:700;transition:transform 0.2s,box-shadow 0.2s,filter 0.2s;box-shadow:0 8px 24px rgba(31,154,112,0.45)}
+    .btn-primary:hover{transform:translateY(-2px);filter:brightness(1.08)}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    #mobile-menu{display:none}#mobile-menu.open{display:block}
+    .faq-item .faq-answer{max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(0.4,0,0.2,1),padding 0.3s ease}
+    .faq-item.open .faq-answer{max-height:400px}
+    .faq-item .faq-icon{transition:transform 0.3s ease}
+    .faq-item.open .faq-icon{transform:rotate(45deg)}
+    .faq-item{transition:background 0.2s,border-color 0.2s}
+    .faq-item.open{background:#f0faf6 !important;border-color:#aee4cf !important}
+    .category-btn{transition:background 0.2s,color 0.2s,border-color 0.2s}
+    .category-btn.active{background:linear-gradient(135deg,#1f9a70,#0d9488);color:#fff;border-color:transparent}
+    .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.2}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="fixed top-0 left-0 right-0 z-50 py-4 px-6 md:px-12" style="background:rgba(6,43,30,0.98);backdrop-filter:blur(16px);box-shadow:0 4px 30px rgba(0,0,0,0.2);">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,#1f9a70,#0d9488);">
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="white" fill="none"/><path d="M9 12l2 2 4-4" stroke="white" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <span class="text-2xl font-black text-white tracking-tight">Lysulin<sup class="text-xs font-normal opacity-75 align-super">®</sup></span>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html#how-it-works" class="text-white/80 hover:text-white font-medium text-sm transition-colors">How It Works</a>
+      <a href="index.html#ingredients" class="text-white/80 hover:text-white font-medium text-sm transition-colors">Ingredients</a>
+      <a href="shop.html" class="text-white/80 hover:text-white font-medium text-sm transition-colors">Shop</a>
+      <a href="about.html" class="text-white/80 hover:text-white font-medium text-sm transition-colors">About</a>
+      <a href="faq.html" class="text-white font-semibold text-sm">FAQs</a>
+      <a href="shop.html" class="btn-primary px-6 py-2.5 rounded-xl text-sm">Shop Now</a>
+    </div>
+    <button id="hamburger" class="md:hidden text-white p-2">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="md:hidden mt-4 glass rounded-2xl p-6 mx-4">
+    <div class="flex flex-col gap-4">
+      <a href="index.html" class="text-white font-medium">Home</a>
+      <a href="shop.html" class="text-white font-medium">Shop</a>
+      <a href="about.html" class="text-white font-medium">About</a>
+      <a href="faq.html" class="text-white font-semibold">FAQs</a>
+      <a href="contact.html" class="text-white font-medium">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="relative pt-40 pb-20 px-6 overflow-hidden" style="background:linear-gradient(135deg,#062b1e,#0e4e3a,#126349);">
+  <div class="orb" style="width:400px;height:400px;background:#14b8a6;top:-80px;right:-80px;"></div>
+  <div class="max-w-7xl mx-auto relative">
+    <div class="flex items-center gap-2 text-white/40 text-sm mb-6">
+      <a href="index.html" class="hover:text-white/70">Home</a>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+      <span class="text-white/70">FAQs</span>
+    </div>
+    <div class="max-w-2xl">
+      <div class="inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest text-teal-400 mb-6" style="background:rgba(45,212,191,0.12);border:1px solid rgba(45,212,191,0.25);">Got Questions?</div>
+      <h1 class="text-5xl md:text-6xl font-black text-white mb-6">Frequently Asked Questions</h1>
+      <p class="text-xl text-white/60">Everything you need to know about Lysulin — the science, the products, and how to get started.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SEARCH + FAQ -->
+<main class="max-w-4xl mx-auto px-6 py-16">
+
+  <!-- Search bar -->
+  <div class="reveal mb-10">
+    <div class="relative">
+      <svg class="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+      <input id="faq-search" type="text" placeholder="Search questions..." class="w-full pl-14 pr-6 py-4 rounded-2xl border border-gray-200 text-gray-900 focus:outline-none focus:ring-2 focus:border-transparent text-base" style="--tw-ring-color:#1f9a70;" oninput="searchFaqs(this.value)" />
+    </div>
+  </div>
+
+  <!-- Category filters -->
+  <div class="reveal flex flex-wrap gap-3 mb-10">
+    <button class="category-btn active px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold text-gray-600" onclick="filterFaqs('all',this)">All</button>
+    <button class="category-btn px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold text-gray-600" onclick="filterFaqs('product',this)">Product</button>
+    <button class="category-btn px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold text-gray-600" onclick="filterFaqs('science',this)">Science</button>
+    <button class="category-btn px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold text-gray-600" onclick="filterFaqs('ordering',this)">Ordering & Shipping</button>
+    <button class="category-btn px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold text-gray-600" onclick="filterFaqs('health',this)">Health & Safety</button>
+  </div>
+
+  <!-- FAQ Items -->
+  <div id="faq-container" class="space-y-3">
+
+    <!-- Science -->
+    <div class="faq-item reveal rounded-2xl border border-gray-200 p-6 cursor-pointer" data-category="science" onclick="toggleFaq(this)">
+      <div class="flex items-center justify-between gap-4">
+        <h3 class="font-bold text-gray-900 text-base md:text-lg pr-4">What is Lysulin and how does it work?</h3>
+        <div class="faq-icon w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#1f9a70,#0d9488);">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        </div>
+      </div>
+      <div class="faq-answer">
+        <p class="text-gray-500 leading-relaxed pt-4">Lysulin is a patented dietary supplement developed by Dr. John Burd Ph.D containing three key nutrients: Lysine, Zinc, and Vitamin C. These ingredients work synergistically to support healthy blood sugar levels by binding excess glucose, enhancing insulin function, and protecting cells from oxidative stress caused by blood sugar fluctuations. The formula is protected by 7 granted patents and has been clinically demonstrated to support healthy A1c levels.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal rounded-2xl border border-gray-200 p-6 cursor-pointer" data-category="science" onclick="toggleFaq(this)">
+      <div class="flex items-center justify-between gap-4">
+        <h3 class="font-bold text-gray-900 text-base md:text-lg pr-4">Is Lysulin clinically proven?</h3>
+        <div class="faq-icon w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#1f9a70,#0d9488);">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        </div>
+      </div>
+      <div class="faq-answer">
+        <p class="text-gray-500 leading-relaxed pt-4">Yes. The Lysulin formula has been clinically studied and the individual ingredients have extensive peer-reviewed research behind them. The specific combination is protected by 7 granted patents, reflecting its novelty and scientific validity. Dr. Burd's research background — including founding Dexcom, the world's leading continuous glucose monitor company — underpins the scientific rigor of Lysulin's development.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal rounded-2xl border border-gray-200 p-6 cursor-pointer" data-category="science" onclick="toggleFaq(this)">
+      <div class="flex items-center justify-between gap-4">
+        <h3 class="font-bold text-gray-900 text-base md:text-lg pr-4">What makes Lysine, Zinc, and Vitamin C special for blood sugar?</h3>
+        <div class="faq-icon w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#1f9a70,#0d9488);">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        </div>
+      </div>
+      <div class="faq-answer">
+        <div class="pt-4 space-y-3 text-gray-500 leading-relaxed">
+          <p><strong class="text-gray-700">Lysine</strong> competitively binds to the same protein sites that glucose attaches to — this process, called glycation, is what drives A1c levels higher. By occupying those sites, Lysine helps block unnecessary glycation.</p>
+          <p><strong class="text-gray-700">Zinc</strong> is an essential cofactor in over 300 enzymatic reactions including those involved in insulin synthesis, secretion, and receptor sensitivity — directly supporting how efficiently your cells absorb glucose.</p>
+          <p><strong class="text-gray-700">Vitamin C</strong> shares the same cellular transport channels as glucose. Higher Vitamin C levels competitively reduce glucose uptake by cells, and it also acts as a potent antioxidant against the free radicals that blood sugar spikes generate.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product -->
+    <div class="faq-item reveal rounded-2xl border border-gray-200 p-6 cursor-pointer" data-category="product" onclick="toggleFaq(this)">
+      <div class="flex items-center justify-between gap-4">
+        <h3 class="font-bold text-gray-900 text-base md:text-lg pr-4">What's the difference between the capsules and the powder?</h3>
+        <div class="faq-icon w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#1f9a70,#0d9488);">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        </div>
+      </div>
+      <div class="faq-answer">
+        <p class="text-gray-500 leading-relaxed pt-4">Both deliver the exact same patented Lysulin formula — the only difference is the delivery method. The Soft Capsules are convenient for on-the-go use, require no mixing, and are odorless and tasteless. The Daily Powder mixes easily into water, juice, or a smoothie and is a good option for those who prefer not to swallow capsules. The IntroPack lets you try both formats over a 90-day period.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal rounded-2xl border border-gray-200 p-6 cursor-pointer" data-category="product" onclick="toggleFaq(this)">
+      <div class="flex items-center justify-between gap-4">
+        <h3 class="font-bold text-gray-900 text-base md:text-lg pr-4">How long before I see results?</h3>
+        <div class="faq-icon w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#1f9a70,#0d9488);">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        </div>
+      </div>
+      <div class="faq-answer">
+        <p class="text-gray-500 leading-relaxed pt-4">Many customers report noticeable improvements in energy levels and reduced post-meal crashes within the first 2–4 weeks. A1c levels, which reflect average blood glucose over roughly 3 months, typically show measurable change after 60–90 days of consistent use. That's exactly why the IntroPack includes a 90-day supply and an A1c Home Test Kit — so you can measure your own results before and after.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal rounded-2xl border border-gray-200 p-6 cursor-pointer" data-category="product" onclick="toggleFaq(this)">
+      <div class="flex items-center justify-between gap-4">
+        <h3 class="font-bold text-gray-900 text-base md:text-lg pr-4">What is the A1c Home Test Kit?</h3>
+        <div class="faq-icon w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#1f9a70,#0d9488);">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        </div>
+      </div>
+      <div class="faq-answer">
+        <p class="text-gray-500 leading-relaxed pt-4">The A1c Home Test Kit allows you to measure your hemoglobin A1c level at home with clinical accuracy, in under 5 minutes. A1c is the gold-standard measure for average blood glucose over the past 2–3 months and is the primary metric your doctor uses to assess blood sugar health. By testing before starting Lysulin and again after 90 days, you can see concrete evidence of your progress. The kit is included free in the IntroPack and is also available separately for $79.95.</p>
+      </div>
+    </div>
+
+    <!-- Health & Safety -->
+    <div class="faq-item reveal rounded-2xl border border-gray-200 p-6 cursor-pointer" data-category="health" onclick="toggleFaq(this)">
+      <div class="flex items-center justify-between gap-4">
+        <h3 class="font-bold text-gray-900 text-base md:text-lg pr-4">Is Lysulin safe to take with diabetes medication?</h3>
+        <div class="faq-icon w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#1f9a70,#0d9488);">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        </div>
+      </div>
+      <div class="faq-answer">
+        <p class="text-gray-500 leading-relaxed pt-4">Lysulin is made from naturally occurring nutrients (Lysine, Zinc, and Vitamin C) with well-established safety profiles. However, if you are currently taking prescription medication for diabetes or any other condition, we strongly recommend consulting your physician before adding any new supplement to your regimen. Your doctor can help monitor your levels and adjust medication if your blood sugar improves significantly.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal rounded-2xl border border-gray-200 p-6 cursor-pointer" data-category="health" onclick="toggleFaq(this)">
+      <div class="flex items-center justify-between gap-4">
+        <h3 class="font-bold text-gray-900 text-base md:text-lg pr-4">Are there any side effects?</h3>
+        <div class="faq-icon w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#1f9a70,#0d9488);">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        </div>
+      </div>
+      <div class="faq-answer">
+        <p class="text-gray-500 leading-relaxed pt-4">Lysulin contains only naturally occurring nutrients at amounts that are well within safe daily intake ranges. No significant side effects have been reported in clinical use. As with any supplement, some individuals with sensitive stomachs may experience mild GI discomfort when starting — taking Lysulin with food typically eliminates this. If you experience any unusual symptoms, discontinue use and consult a healthcare professional.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal rounded-2xl border border-gray-200 p-6 cursor-pointer" data-category="health" onclick="toggleFaq(this)">
+      <div class="flex items-center justify-between gap-4">
+        <h3 class="font-bold text-gray-900 text-base md:text-lg pr-4">Is Lysulin suitable for vegans and vegetarians?</h3>
+        <div class="faq-icon w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#1f9a70,#0d9488);">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        </div>
+      </div>
+      <div class="faq-answer">
+        <p class="text-gray-500 leading-relaxed pt-4">The Lysulin Daily Powder is suitable for vegans and vegetarians. The Soft Capsules use a gelatin-based soft gel — if this is a concern, please opt for the powder formula. All Lysulin products are free from artificial colors, artificial sweeteners, and common allergens including gluten, dairy, and soy.</p>
+      </div>
+    </div>
+
+    <!-- Ordering -->
+    <div class="faq-item reveal rounded-2xl border border-gray-200 p-6 cursor-pointer" data-category="ordering" onclick="toggleFaq(this)">
+      <div class="flex items-center justify-between gap-4">
+        <h3 class="font-bold text-gray-900 text-base md:text-lg pr-4">How does the Subscribe & Save program work?</h3>
+        <div class="faq-icon w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#1f9a70,#0d9488);">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        </div>
+      </div>
+      <div class="faq-answer">
+        <p class="text-gray-500 leading-relaxed pt-4">With Subscribe & Save, your chosen Lysulin product ships automatically every month at the subscription price. All subscriptions include free shipping — always. You can pause, skip a month, or cancel at any time from your account dashboard with no fees or penalties. Most subscribers find that committing to a monthly supply helps them stay consistent, which is key to seeing measurable results.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal rounded-2xl border border-gray-200 p-6 cursor-pointer" data-category="ordering" onclick="toggleFaq(this)">
+      <div class="flex items-center justify-between gap-4">
+        <h3 class="font-bold text-gray-900 text-base md:text-lg pr-4">What is your money-back guarantee?</h3>
+        <div class="faq-icon w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#1f9a70,#0d9488);">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        </div>
+      </div>
+      <div class="faq-answer">
+        <p class="text-gray-500 leading-relaxed pt-4">We offer a full 60-day money-back guarantee on all Lysulin products. If you're not satisfied with your results for any reason within 60 days of purchase, contact our support team and we'll process a full refund — no questions asked, no hassle. We're confident in our formula, and this guarantee reflects that.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal rounded-2xl border border-gray-200 p-6 cursor-pointer" data-category="ordering" onclick="toggleFaq(this)">
+      <div class="flex items-center justify-between gap-4">
+        <h3 class="font-bold text-gray-900 text-base md:text-lg pr-4">Where can I buy Lysulin in stores?</h3>
+        <div class="faq-icon w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#1f9a70,#0d9488);">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        </div>
+      </div>
+      <div class="faq-answer">
+        <p class="text-gray-500 leading-relaxed pt-4">Lysulin is available at select CVS, Walmart, and Rexall pharmacy locations, as well as on Walmart.com. However, for the best pricing, the full product range, and subscription savings, we recommend ordering directly through our website. Use our Store Locator to find the nearest in-store retailer.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Still have questions -->
+  <div class="reveal mt-16 rounded-3xl p-8 md:p-10 text-center" style="background:linear-gradient(135deg,#062b1e,#126349);">
+    <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5" style="background:rgba(45,212,191,0.15);">
+      <svg class="w-8 h-8 text-teal-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/></svg>
+    </div>
+    <h3 class="text-2xl font-black text-white mb-3">Still Have Questions?</h3>
+    <p class="text-white/60 mb-6 max-w-md mx-auto">Our team is happy to help. Reach out and we'll get back to you within one business day.</p>
+    <a href="contact.html" class="btn-primary inline-block px-8 py-3.5 rounded-2xl text-sm">Contact Us</a>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="py-10 px-6 border-t border-gray-100" style="background:#040f09;">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#1f9a70,#0d9488);"><svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="white" fill="none"/><path d="M9 12l2 2 4-4" stroke="white" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <span class="font-black text-white">Lysulin<sup class="text-xs font-normal text-white/40">®</sup></span>
+    </a>
+    <p class="text-white/25 text-xs text-center">© 2025 Lysulin. These statements have not been evaluated by the FDA. Not intended to diagnose, treat, cure, or prevent any disease.</p>
+    <div class="flex gap-4 text-white/40 text-sm">
+      <a href="index.html" class="hover:text-white/70">Home</a>
+      <a href="shop.html" class="hover:text-white/70">Shop</a>
+      <a href="contact.html" class="hover:text-white/70">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobile-menu').classList.toggle('open'));
+
+  function toggleFaq(el) {
+    const isOpen = el.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+    if(!isOpen) el.classList.add('open');
+  }
+
+  function filterFaqs(cat, btn) {
+    document.querySelectorAll('.category-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.faq-item').forEach(item=>{
+      item.style.display=(cat==='all'||item.dataset.category===cat)?'':'none';
+    });
+  }
+
+  function searchFaqs(q) {
+    const query = q.toLowerCase();
+    document.querySelectorAll('.faq-item').forEach(item=>{
+      const text = item.textContent.toLowerCase();
+      item.style.display = text.includes(query) ? '' : 'none';
+    });
+    // Reset category buttons
+    if(q) { document.querySelectorAll('.category-btn').forEach(b=>b.classList.remove('active')); }
+    else { document.querySelector('.category-btn').classList.add('active'); }
+  }
+
+  const obs=new IntersectionObserver(e=>e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible')}),{threshold:0.05});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

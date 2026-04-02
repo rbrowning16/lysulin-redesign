@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subscribe & Save — Lysulin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: { 50:'#f0faf6',100:'#d8f2e8',200:'#aee4cf',300:'#76cfaf',400:'#3db48a',500:'#1f9a70',600:'#167c59',700:'#126349',800:'#0e4e3a',900:'#0b3e2e' } },
+          fontFamily: { sans:['Inter','sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Inter',sans-serif;background:#fff;color:#0f172a;overflow-x:hidden}
+    .glass{background:rgba(255,255,255,0.08);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.15)}
+    .btn-primary{background:linear-gradient(135deg,#1f9a70 0%,#0d9488 100%);color:#fff;font-weight:700;transition:transform 0.2s,box-shadow 0.2s,filter 0.2s;box-shadow:0 8px 24px rgba(31,154,112,0.45)}
+    .btn-primary:hover{transform:translateY(-2px);filter:brightness(1.08)}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    #mobile-menu{display:none}#mobile-menu.open{display:block}
+    .plan-card{transition:transform 0.3s cubic-bezier(.34,1.56,.64,1),box-shadow 0.3s ease,border-color 0.2s}
+    .plan-card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(11,62,46,0.12)}
+    .plan-card.selected{border-color:#1f9a70 !important;box-shadow:0 0 0 3px rgba(31,154,112,0.2)}
+    .toggle-option{transition:background 0.2s,color 0.2s}
+    .toggle-option.active{background:linear-gradient(135deg,#1f9a70,#0d9488);color:#fff}
+    .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.2}
+    .frequency-btn{transition:background 0.2s,color 0.2s,border-color 0.2s}
+    .frequency-btn.active{background:#f0faf6;border-color:#1f9a70;color:#126349}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="fixed top-0 left-0 right-0 z-50 py-4 px-6 md:px-12" style="background:rgba(6,43,30,0.98);backdrop-filter:blur(16px);box-shadow:0 4px 30px rgba(0,0,0,0.2);">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,#1f9a70,#0d9488);">
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="white" fill="none"/><path d="M9 12l2 2 4-4" stroke="white" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <span class="text-2xl font-black text-white tracking-tight">Lysulin<sup class="text-xs font-normal opacity-75 align-super">®</sup></span>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html#how-it-works" class="text-white/80 hover:text-white font-medium text-sm transition-colors">How It Works</a>
+      <a href="index.html#ingredients" class="text-white/80 hover:text-white font-medium text-sm transition-colors">Ingredients</a>
+      <a href="shop.html" class="text-white/80 hover:text-white font-medium text-sm transition-colors">Shop</a>
+      <a href="about.html" class="text-white/80 hover:text-white font-medium text-sm transition-colors">About</a>
+      <a href="faq.html" class="text-white/80 hover:text-white font-medium text-sm transition-colors">FAQs</a>
+      <a href="shop.html" class="btn-primary px-6 py-2.5 rounded-xl text-sm">Shop Now</a>
+    </div>
+    <button id="hamburger" class="md:hidden text-white p-2">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="md:hidden mt-4 glass rounded-2xl p-6 mx-4">
+    <div class="flex flex-col gap-4">
+      <a href="index.html" class="text-white font-medium">Home</a>
+      <a href="shop.html" class="text-white font-medium">Shop</a>
+      <a href="about.html" class="text-white font-medium">About</a>
+      <a href="faq.html" class="text-white font-medium">FAQs</a>
+      <a href="contact.html" class="text-white font-medium">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="relative pt-40 pb-24 px-6 overflow-hidden" style="background:linear-gradient(135deg,#062b1e 0%,#0e4e3a 50%,#126349 100%);">
+  <div class="orb" style="width:500px;height:500px;background:#14b8a6;top:-100px;right:-100px;"></div>
+  <div class="orb" style="width:300px;height:300px;background:#3db48a;bottom:0;left:-50px;"></div>
+  <div class="max-w-7xl mx-auto relative text-center">
+    <div class="inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest text-teal-400 mb-6" style="background:rgba(45,212,191,0.12);border:1px solid rgba(45,212,191,0.25);">Best Value</div>
+    <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">Subscribe &amp; Save</h1>
+    <p class="text-xl text-white/60 max-w-2xl mx-auto mb-8">Lock in your monthly supply, save on every order, and get free shipping always. Cancel or pause anytime — no questions asked.</p>
+    <!-- Perks strip -->
+    <div class="flex flex-wrap justify-center gap-6 text-white/70 text-sm">
+      <span class="flex items-center gap-2"><svg class="w-4 h-4 text-teal-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>Free shipping every month</span>
+      <span class="flex items-center gap-2"><svg class="w-4 h-4 text-teal-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>Cancel or pause anytime</span>
+      <span class="flex items-center gap-2"><svg class="w-4 h-4 text-teal-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>60-day money-back guarantee</span>
+      <span class="flex items-center gap-2"><svg class="w-4 h-4 text-teal-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>Subscriber-only pricing</span>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="py-20 px-6 bg-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-14 reveal">
+      <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">How Subscribing Works</h2>
+      <p class="text-gray-500 text-lg">Simple, flexible, and always in your control.</p>
+    </div>
+    <div class="grid md:grid-cols-4 gap-6">
+      <div class="reveal text-center">
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-black text-white" style="background:linear-gradient(135deg,#1f9a70,#0d9488);">1</div>
+        <h3 class="font-bold text-gray-900 mb-2">Choose Your Plan</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Select the product and frequency that fits your routine.</p>
+      </div>
+      <div class="reveal text-center" style="transition-delay:0.1s">
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-black text-white" style="background:linear-gradient(135deg,#1f9a70,#0d9488);">2</div>
+        <h3 class="font-bold text-gray-900 mb-2">Auto-Ships Monthly</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Your supply ships automatically each month, always with free shipping.</p>
+      </div>
+      <div class="reveal text-center" style="transition-delay:0.2s">
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-black text-white" style="background:linear-gradient(135deg,#1f9a70,#0d9488);">3</div>
+        <h3 class="font-bold text-gray-900 mb-2">Track Your Results</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Use the A1c Home Test Kit to measure your progress every 90 days.</p>
+      </div>
+      <div class="reveal text-center" style="transition-delay:0.3s">
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-black text-white" style="background:linear-gradient(135deg,#1f9a70,#0d9488);">4</div>
+        <h3 class="font-bold text-gray-900 mb-2">Full Control Always</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Pause, skip, swap products, or cancel anytime — no fees, no friction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="py-20 px-6" style="background:#f8fffe;">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12 reveal">
+      <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">Choose Your Plan</h2>
+      <p class="text-gray-500 text-lg mb-8">All plans include free shipping and a 60-day guarantee.</p>
+      <!-- Frequency toggle -->
+      <div class="inline-flex items-center rounded-2xl p-1.5 gap-1" style="background:#e8f5ee;border:1px solid #aee4cf;">
+        <button class="frequency-btn active px-6 py-2.5 rounded-xl text-sm font-semibold text-gray-700 border border-transparent" onclick="setFrequency('monthly',this)">Monthly</button>
+        <button class="frequency-btn px-6 py-2.5 rounded-xl text-sm font-semibold text-gray-700 border border-transparent relative" onclick="setFrequency('quarterly',this)">
+          Every 3 Months
+          <span class="absolute -top-2 -right-2 px-1.5 py-0.5 rounded-full text-xs font-bold text-white" style="background:linear-gradient(135deg,#f59e0b,#ef4444);">Save 10%</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <!-- Capsules plan -->
+      <div class="plan-card reveal bg-white rounded-3xl p-8 border-2 border-gray-100 cursor-pointer" onclick="selectPlan(this)">
+        <div class="text-4xl mb-5">💊</div>
+        <div class="text-xs text-brand-600 font-semibold uppercase tracking-wider mb-3 bg-brand-50 inline-block px-2 py-0.5 rounded-full">Most Popular</div>
+        <h3 class="text-xl font-black text-gray-900 mb-2">Soft Capsules</h3>
+        <p class="text-gray-500 text-sm leading-relaxed mb-6">90 easy-to-swallow capsules. One daily with a meal. Perfect for consistent on-the-go use.</p>
+        <div class="mb-6">
+          <div class="monthly-price">
+            <span class="text-4xl font-black text-gray-900">$23.95</span>
+            <span class="text-gray-400 text-sm ml-1">/month</span>
+          </div>
+          <div class="quarterly-price hidden">
+            <span class="text-4xl font-black text-gray-900">$64.95</span>
+            <span class="text-gray-400 text-sm ml-1">/quarter</span>
+            <div class="text-brand-600 text-xs font-semibold mt-1">Save ~$7 vs monthly</div>
+          </div>
+        </div>
+        <ul class="space-y-2 mb-6 text-sm text-gray-500">
+          <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>Free shipping every order</li>
+          <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>Cancel anytime</li>
+          <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>60-day guarantee</li>
+        </ul>
+        <button class="btn-primary w-full py-3.5 rounded-2xl text-sm">Subscribe to Capsules</button>
+      </div>
+
+      <!-- Powder plan -->
+      <div class="plan-card reveal bg-white rounded-3xl p-8 border-2 border-gray-100 cursor-pointer" onclick="selectPlan(this)" style="transition-delay:0.15s">
+        <div class="text-4xl mb-5">🥤</div>
+        <div class="text-xs text-amber-600 font-semibold uppercase tracking-wider mb-3 bg-amber-50 inline-block px-2 py-0.5 rounded-full">Great for Smoothies</div>
+        <h3 class="text-xl font-black text-gray-900 mb-2">Daily Powder</h3>
+        <p class="text-gray-500 text-sm leading-relaxed mb-6">One scoop daily. Lightly flavored, mixes easily into any drink. No artificial sweeteners.</p>
+        <div class="mb-6">
+          <div class="monthly-price">
+            <span class="text-4xl font-black text-gray-900">$23.95</span>
+            <span class="text-gray-400 text-sm ml-1">/month</span>
+          </div>
+          <div class="quarterly-price hidden">
+            <span class="text-4xl font-black text-gray-900">$64.95</span>
+            <span class="text-gray-400 text-sm ml-1">/quarter</span>
+            <div class="text-brand-600 text-xs font-semibold mt-1">Save ~$7 vs monthly</div>
+          </div>
+        </div>
+        <ul class="space-y-2 mb-6 text-sm text-gray-500">
+          <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>Free shipping every order</li>
+          <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>Cancel anytime</li>
+          <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>60-day guarantee</li>
+        </ul>
+        <button class="btn-primary w-full py-3.5 rounded-2xl text-sm">Subscribe to Powder</button>
+      </div>
+
+      <!-- Bundle plan (featured) -->
+      <div class="plan-card reveal rounded-3xl p-8 border-2 cursor-pointer relative overflow-hidden" onclick="selectPlan(this)" style="background:linear-gradient(135deg,#062b1e,#126349);border-color:#1f9a70;transition-delay:0.3s">
+        <div class="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold text-white" style="background:linear-gradient(135deg,#f59e0b,#ef4444);">BEST VALUE</div>
+        <div class="text-4xl mb-5">✨</div>
+        <div class="text-xs text-teal-400 font-semibold uppercase tracking-wider mb-3" style="background:rgba(45,212,191,0.15);display:inline-block;padding:2px 8px;border-radius:99px;">Complete Bundle</div>
+        <h3 class="text-xl font-black text-white mb-2">Capsules + Powder</h3>
+        <p class="text-white/60 text-sm leading-relaxed mb-6">Both formats every month — flexibility for home and travel. Maximum coverage, best savings.</p>
+        <div class="mb-6">
+          <div class="monthly-price">
+            <span class="text-4xl font-black text-white">$43.95</span>
+            <span class="text-white/40 text-sm ml-1">/month</span>
+            <div class="text-teal-400 text-xs font-semibold mt-1">Save $3.95 vs buying separately</div>
+          </div>
+          <div class="quarterly-price hidden">
+            <span class="text-4xl font-black text-white">$118.95</span>
+            <span class="text-white/40 text-sm ml-1">/quarter</span>
+            <div class="text-teal-400 text-xs font-semibold mt-1">Save ~$13 vs monthly</div>
+          </div>
+        </div>
+        <ul class="space-y-2 mb-6 text-sm text-white/70">
+          <li class="flex items-center gap-2"><svg class="w-4 h-4 text-teal-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>Free shipping every order</li>
+          <li class="flex items-center gap-2"><svg class="w-4 h-4 text-teal-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>Cancel anytime</li>
+          <li class="flex items-center gap-2"><svg class="w-4 h-4 text-teal-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>60-day money-back guarantee</li>
+          <li class="flex items-center gap-2"><svg class="w-4 h-4 text-teal-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>Both formats — max flexibility</li>
+        </ul>
+        <button class="w-full py-3.5 rounded-2xl text-sm font-bold text-brand-900" style="background:linear-gradient(135deg,#4ade80,#2dd4bf);">Subscribe — Best Deal</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="py-20 px-6 bg-white">
+  <div class="max-w-4xl mx-auto">
+    <div class="reveal rounded-3xl p-10 md:p-14 text-center" style="background:linear-gradient(135deg,#062b1e,#126349);">
+      <div class="w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6" style="background:rgba(45,212,191,0.15);">
+        <svg class="w-10 h-10 text-teal-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-black text-white mb-4">Zero Risk Guarantee</h2>
+      <p class="text-white/60 text-lg max-w-2xl mx-auto mb-8 leading-relaxed">Every Lysulin subscription is backed by a full 60-day money-back guarantee. If you're not satisfied with your results — for any reason — we'll refund your most recent order in full. No hoops. No hassle.</p>
+      <div class="flex flex-wrap justify-center gap-8 text-white/60 text-sm">
+        <span class="flex items-center gap-2"><svg class="w-4 h-4 text-teal-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>No return required</span>
+        <span class="flex items-center gap-2"><svg class="w-4 h-4 text-teal-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>No questions asked</span>
+        <span class="flex items-center gap-2"><svg class="w-4 h-4 text-teal-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>Instant refund processing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ MINI -->
+<section class="py-16 px-6" style="background:#f8fffe;">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="text-2xl font-black text-gray-900 text-center mb-10 reveal">Subscription FAQs</h2>
+    <div class="space-y-4">
+      <div class="reveal bg-white rounded-2xl p-6 border border-gray-100">
+        <h3 class="font-bold text-gray-900 mb-2">Can I switch products after subscribing?</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Yes — you can switch between capsules, powder, or the bundle from your account dashboard at any time before your next billing date.</p>
+      </div>
+      <div class="reveal bg-white rounded-2xl p-6 border border-gray-100" style="transition-delay:0.1s">
+        <h3 class="font-bold text-gray-900 mb-2">What if I want to pause instead of cancel?</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">You can skip any shipment or pause your subscription for up to 3 months. Your subscription will resume automatically after the pause period unless you cancel.</p>
+      </div>
+      <div class="reveal bg-white rounded-2xl p-6 border border-gray-100" style="transition-delay:0.2s">
+        <h3 class="font-bold text-gray-900 mb-2">When will I be charged and when does it ship?</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">You're charged on the same day each month (or quarter) from the date of your first order. Shipments go out within 1–2 business days of billing and typically arrive within 3–5 business days.</p>
+      </div>
+    </div>
+    <div class="text-center mt-8 reveal">
+      <a href="faq.html" class="text-brand-600 font-semibold text-sm hover:text-brand-700 transition-colors">View all FAQs →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-10 px-6 border-t border-gray-100" style="background:#040f09;">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#1f9a70,#0d9488);"><svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="white" fill="none"/><path d="M9 12l2 2 4-4" stroke="white" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <span class="font-black text-white">Lysulin<sup class="text-xs font-normal text-white/40">®</sup></span>
+    </a>
+    <p class="text-white/25 text-xs text-center">© 2025 Lysulin. These statements have not been evaluated by the FDA. Not intended to diagnose, treat, cure, or prevent any disease.</p>
+    <div class="flex gap-4 text-white/40 text-sm">
+      <a href="index.html" class="hover:text-white/70">Home</a>
+      <a href="shop.html" class="hover:text-white/70">Shop</a>
+      <a href="contact.html" class="hover:text-white/70">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobile-menu').classList.toggle('open'));
+
+  function setFrequency(type, btn) {
+    document.querySelectorAll('.frequency-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.monthly-price').forEach(el=>el.classList.toggle('hidden', type==='quarterly'));
+    document.querySelectorAll('.quarterly-price').forEach(el=>el.classList.toggle('hidden', type==='monthly'));
+  }
+
+  function selectPlan(card) {
+    document.querySelectorAll('.plan-card').forEach(c=>c.classList.remove('selected'));
+    card.classList.add('selected');
+  }
+
+  const obs=new IntersectionObserver(e=>e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible')}),{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
