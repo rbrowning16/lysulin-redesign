@@ -279,6 +279,7 @@ p { color: var(--color-text-soft); }
   align-items: center;
   justify-content: center;
   min-height: var(--button-height);
+  min-width: 9rem;
   padding: 0 var(--button-padding-x);
   border-radius: var(--button-radius);
   font-size: var(--button-font-size);
