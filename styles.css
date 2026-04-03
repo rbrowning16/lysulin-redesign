@@ -160,37 +160,48 @@ a { text-decoration: none; color: inherit; }
   position: absolute;
   inset: 0;
   z-index: 10;
-  pointer-events: none; /* let clicks pass through the container */
+  pointer-events: none;
 }
 
-.hotspot {
+/* Real visible buttons overlaid over the drawn buttons in the wireframe image */
+.overlay-btn {
   position: absolute;
-  display: block;
-  border-radius: 8px;
-  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
   cursor: pointer;
-  pointer-events: all; /* re-enable clicks on the actual hotspot links */
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: clamp(0.55rem, 1.1vw, 0.95rem);
+  border-radius: 999px;
+  transition: opacity 0.15s, transform 0.15s;
+  white-space: nowrap;
+  text-decoration: none;
 }
-.hotspot:hover {
-  background: rgba(255,255,255,0.15);
-}
-.hotspot:focus-visible {
-  box-shadow: 0 0 0 4px rgba(20,184,166,0.5);
+.overlay-btn:hover  { opacity: 0.88; transform: translateY(-1px); }
+.overlay-btn:active { transform: translateY(0); }
+
+/* Filled dark-green "Shop Now" button */
+.overlay-shop-now {
+  left: 6.59%;
+  top: 13.2%;
+  width: 13.2%;
+  height: 3.05%;
+  background: #0b3e2e;
+  color: #ffffff;
+  border: 2px solid #0b3e2e;
 }
 
-/* Coordinates relative to 1365×2048 source image */
-/* Scaled as % so they work at any viewport width  */
-.shop-now {
-  left: 6.6%;
-  top: 13.1%;
-  width: 13.2%;
-  height: 3.1%;
-}
-.how-it-works {
-  left: 20.7%;
-  top: 13.1%;
+/* Outlined "How It Works" button */
+.overlay-how-it-works {
+  left: 20.73%;
+  top: 13.2%;
   width: 13.4%;
-  height: 3.1%;
+  height: 3.05%;
+  background: transparent;
+  color: #0b3e2e;
+  border: 2px solid #0b3e2e;
 }
 
 @media (max-width: 900px) {
