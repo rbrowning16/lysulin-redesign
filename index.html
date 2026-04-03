@@ -71,22 +71,52 @@
       border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
-    /* ---------- Animated gradient orbs ---------- */
-    .orb {
+    /* ---------- Rising bubbles ---------- */
+    @keyframes bubbleRise {
+      0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+      8%   { opacity: 0.75; }
+      85%  { opacity: 0.45; }
+      100% { transform: translateY(-680px) translateX(var(--drift,12px)) scale(0.7); opacity: 0; }
+    }
+    .bubble {
       position: absolute;
       border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.35;
-      animation: drift 12s ease-in-out infinite alternate;
+      animation: bubbleRise var(--dur, 8s) ease-in var(--delay, 0s) infinite;
+      background: radial-gradient(circle at 32% 32%, rgba(255,255,255,0.95), rgba(45,200,160,0.25));
+      border: 1px solid rgba(45,212,191,0.45);
+      pointer-events: none;
     }
-    .orb-1 { width: 500px; height: 500px; background: #14b8a6; top: -120px; right: -100px; animation-delay: 0s; }
-    .orb-2 { width: 380px; height: 380px; background: #3db48a;  bottom: -60px; left: -80px;  animation-delay: 3s; }
-    .orb-3 { width: 280px; height: 280px; background: #0d9488;  top: 30%;     left: 20%;    animation-delay: 6s; }
 
+    /* ---------- Bottle (mix-blend removes white bg) ---------- */
+    /* Note: no filter/z-index — those create stacking contexts that break mix-blend-mode */
+    .bottle-img {
+      mix-blend-mode: multiply;
+    }
+    /* Shadow via a sibling element instead */
+    .bottle-shadow {
+      width: 200px; height: 24px;
+      background: radial-gradient(ellipse, rgba(10,60,35,0.18) 0%, transparent 70%);
+      filter: blur(10px);
+      margin-top: -24px;
+    }
+
+    /* ---------- Glow blob behind bottle ---------- */
+    .bottle-glow {
+      position: absolute;
+      width: 420px; height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(180,238,220,0.6) 0%, rgba(200,245,232,0.1) 70%);
+      filter: blur(40px);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+
+    /* ---------- drift (used by stat chips) ---------- */
     @keyframes drift {
-      0%   { transform: translate(0,  0)   scale(1);    }
-      50%  { transform: translate(30px, -20px) scale(1.05); }
-      100% { transform: translate(-20px, 30px) scale(0.95); }
+      0%   { transform: translate(0,0)   scale(1); }
+      50%  { transform: translate(6px,-8px) scale(1.03); }
+      100% { transform: translate(-6px,8px) scale(0.97); }
     }
 
     /* ---------- Fade-in on scroll ---------- */
@@ -218,28 +248,34 @@
   <div class="max-w-7xl mx-auto flex items-center justify-between">
 
     <!-- Logo -->
-    <a href="#" class="flex items-center gap-3">
-      <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg,#1f9a70,#0d9488);">
-        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="9" stroke="white" stroke-width="2" fill="none"/>
-          <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <span class="text-2xl font-black text-white tracking-tight">Lysulin<sup class="text-xs font-normal opacity-75 align-super">®</sup></span>
+    <a href="#" class="flex items-center gap-2">
+      <!-- Dot cluster mark -->
+      <svg viewBox="0 0 38 30" fill="none" width="38" height="30">
+        <circle cx="34" cy="4"  r="2.6" fill="#1a9fd4"/>
+        <circle cx="27" cy="2.5" r="3.1" fill="#1a9fd4"/>
+        <circle cx="20" cy="4"  r="2.4" fill="#1ab8d4"/>
+        <circle cx="35" cy="11" r="2.0" fill="#2abcc8"/>
+        <circle cx="28" cy="9.5" r="3.0" fill="#2abcc8"/>
+        <circle cx="21" cy="10" r="2.6" fill="#2db890"/>
+        <circle cx="34" cy="18" r="2.2" fill="#3db88a"/>
+        <circle cx="27" cy="17" r="2.8" fill="#3db88a"/>
+        <circle cx="20" cy="17" r="2.0" fill="#3db88a"/>
+      </svg>
+      <span class="nav-logo text-2xl font-black tracking-tight" style="color:#0b3e2e;">Lysulin<sup class="text-xs font-normal opacity-75 align-super">®</sup></span>
     </a>
 
     <!-- Desktop Nav -->
     <div class="hidden md:flex items-center gap-8">
-      <a href="#how-it-works" class="text-white/80 hover:text-white font-medium text-sm transition-colors">How It Works</a>
-      <a href="#ingredients" class="text-white/80 hover:text-white font-medium text-sm transition-colors">Ingredients</a>
-      <a href="#products" class="text-white/80 hover:text-white font-medium text-sm transition-colors">Shop</a>
-      <a href="#science" class="text-white/80 hover:text-white font-medium text-sm transition-colors">Science</a>
-      <a href="#testimonials" class="text-white/80 hover:text-white font-medium text-sm transition-colors">Reviews</a>
+      <a href="#how-it-works" class="nav-link font-medium text-sm transition-colors" style="color:#126349;">How It Works</a>
+      <a href="#ingredients"  class="nav-link font-medium text-sm transition-colors" style="color:#126349;">Ingredients</a>
+      <a href="#products"     class="nav-link font-medium text-sm transition-colors" style="color:#126349;">Shop</a>
+      <a href="#science"      class="nav-link font-medium text-sm transition-colors" style="color:#126349;">Science</a>
+      <a href="#testimonials" class="nav-link font-medium text-sm transition-colors" style="color:#126349;">Reviews</a>
       <a href="#products" class="btn-primary px-6 py-2.5 rounded-xl text-sm">Shop Now</a>
     </div>
 
     <!-- Mobile hamburger -->
-    <button id="hamburger" class="md:hidden text-white p-2">
+    <button id="hamburger" class="md:hidden p-2" style="color:#0b3e2e;">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
       </svg>
@@ -247,13 +283,13 @@
   </div>
 
   <!-- Mobile menu -->
-  <div id="mobile-menu" class="md:hidden mt-4 glass rounded-2xl p-6 mx-4">
+  <div id="mobile-menu" class="md:hidden mt-4 rounded-2xl p-6 mx-4" style="background:rgba(255,255,255,0.92);backdrop-filter:blur(16px);border:1px solid rgba(26,107,60,0.15);">
     <div class="flex flex-col gap-4">
-      <a href="#how-it-works" class="text-white font-medium" onclick="closeMobileMenu()">How It Works</a>
-      <a href="#ingredients"  class="text-white font-medium" onclick="closeMobileMenu()">Ingredients</a>
-      <a href="#products"     class="text-white font-medium" onclick="closeMobileMenu()">Shop</a>
-      <a href="#science"      class="text-white font-medium" onclick="closeMobileMenu()">Science</a>
-      <a href="#testimonials" class="text-white font-medium" onclick="closeMobileMenu()">Reviews</a>
+      <a href="#how-it-works" class="font-medium" style="color:#0b3e2e;" onclick="closeMobileMenu()">How It Works</a>
+      <a href="#ingredients"  class="font-medium" style="color:#0b3e2e;" onclick="closeMobileMenu()">Ingredients</a>
+      <a href="#products"     class="font-medium" style="color:#0b3e2e;" onclick="closeMobileMenu()">Shop</a>
+      <a href="#science"      class="font-medium" style="color:#0b3e2e;" onclick="closeMobileMenu()">Science</a>
+      <a href="#testimonials" class="font-medium" style="color:#0b3e2e;" onclick="closeMobileMenu()">Reviews</a>
       <a href="#products" class="btn-primary px-6 py-3 rounded-xl text-center text-sm">Shop Now</a>
     </div>
   </div>
@@ -261,135 +297,99 @@
 
 
 <!-- ============================================================
-     HERO
+     HERO — split pharma layout
 ============================================================ -->
-<section class="relative min-h-screen flex items-center overflow-hidden" style="background: linear-gradient(135deg, #062b1e 0%, #0e4e3a 40%, #126349 70%, #0d766c 100%);">
+<section class="relative min-h-screen flex items-stretch overflow-hidden" style="background:linear-gradient(to right, #0a2d1e 0%, #0a2d1e 50%, #d4f0e4 50%, #eaf8f2 100%);">
 
-  <!-- Animated orbs -->
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
+  <!-- Dot-grid texture on dark half -->
+  <div class="absolute inset-y-0 left-0 w-1/2 hidden md:block" style="background-image:radial-gradient(circle,rgba(255,255,255,0.12) 1px,transparent 1px);background-size:24px 24px;pointer-events:none;"></div>
 
-  <!-- Grid overlay -->
-  <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  <!-- Bubble container (dark half only) -->
+  <div id="bubble-container" class="absolute inset-y-0 left-0 w-full md:w-1/2 overflow-hidden pointer-events-none"></div>
 
-  <div class="relative max-w-7xl mx-auto px-6 md:px-12 py-32 grid md:grid-cols-2 gap-12 items-center">
+  <!-- Content wrapper -->
+  <div class="relative w-full max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 min-h-screen items-center">
 
-    <!-- Left copy -->
-    <div class="space-y-8">
-      <!-- Pill badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-widest text-teal-400" style="background: rgba(45,212,191,0.12); border: 1px solid rgba(45,212,191,0.25);">
-        <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+    <!-- LEFT: copy -->
+    <div class="py-32 md:py-0 space-y-8 pr-0 md:pr-12">
+
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-widest" style="background:rgba(45,212,191,0.15);border:1px solid rgba(45,212,191,0.3);color:#5eead4;">
+        <span class="w-2 h-2 rounded-full animate-pulse" style="background:#2dd4bf;"></span>
         7 Granted Patents · Clinically Studied
       </div>
 
-      <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight">
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.02] tracking-tight text-white">
         Blood Sugar<br/>
-        <span style="background: linear-gradient(135deg,#4ade80,#2dd4bf); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">Stability</span><br/>
-        Starts Here.
+        <span style="background:linear-gradient(135deg,#4ade80 0%,#2dd4bf 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Instability</span><br/>
+        Ends Here.
       </h1>
 
-      <p class="text-lg text-white/70 leading-relaxed max-w-md">
-        Lysulin combines three clinically validated nutrients in a patented formula designed to support healthy A1c levels, improve insulin function, and fuel your energy — naturally.
+      <p class="text-lg leading-relaxed max-w-md" style="color:rgba(255,255,255,0.65);">
+        Daily glucose support with patented ingredients clinically proven to maintain healthy A1C levels. Built on 40+ years of biochemistry research by the founder of Dexcom.
       </p>
 
-      <!-- Trust badges -->
-      <div class="flex flex-wrap gap-4 text-sm text-white/60">
-        <span class="flex items-center gap-1.5">
-          <svg class="w-4 h-4 text-teal-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
-          Clinically Studied
-        </span>
-        <span class="flex items-center gap-1.5">
-          <svg class="w-4 h-4 text-teal-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
-          Patented Formula
-        </span>
-        <span class="flex items-center gap-1.5">
-          <svg class="w-4 h-4 text-teal-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
-          60-Day Guarantee
-        </span>
-        <span class="flex items-center gap-1.5">
-          <svg class="w-4 h-4 text-teal-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
-          Free Shipping on Subscribe
-        </span>
+      <div class="flex flex-wrap gap-3 text-sm" style="color:rgba(255,255,255,0.55);">
+        <span class="flex items-center gap-1.5"><svg class="w-4 h-4" style="color:#2dd4bf;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>Clinically Studied</span>
+        <span class="flex items-center gap-1.5"><svg class="w-4 h-4" style="color:#2dd4bf;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>Patented Formula</span>
+        <span class="flex items-center gap-1.5"><svg class="w-4 h-4" style="color:#2dd4bf;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>60-Day Guarantee</span>
+        <span class="flex items-center gap-1.5"><svg class="w-4 h-4" style="color:#2dd4bf;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>Free Shipping</span>
       </div>
 
-      <!-- CTAs -->
       <div class="flex flex-wrap gap-4">
         <a href="#products" class="btn-primary px-8 py-4 rounded-2xl text-base inline-block">Shop Now</a>
-        <a href="#how-it-works" class="btn-outline px-8 py-4 rounded-2xl text-base inline-block">How It Works</a>
+        <a href="#how-it-works" class="px-8 py-4 rounded-2xl text-base inline-block font-semibold text-white transition-all" style="border:2px solid rgba(255,255,255,0.2);" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='transparent'">How It Works</a>
       </div>
 
-      <!-- Social proof strip -->
       <div class="flex items-center gap-4 pt-2">
         <div class="flex -space-x-2">
-          <div class="w-9 h-9 rounded-full border-2 border-brand-800" style="background: linear-gradient(135deg,#4ade80,#2dd4bf);"></div>
-          <div class="w-9 h-9 rounded-full border-2 border-brand-800" style="background: linear-gradient(135deg,#f59e0b,#ef4444);"></div>
-          <div class="w-9 h-9 rounded-full border-2 border-brand-800" style="background: linear-gradient(135deg,#6366f1,#8b5cf6);"></div>
-          <div class="w-9 h-9 rounded-full border-2 border-brand-800" style="background: linear-gradient(135deg,#ec4899,#f97316);"></div>
+          <div class="w-9 h-9 rounded-full border-2" style="border-color:#0b3e2e;background:linear-gradient(135deg,#4ade80,#2dd4bf);"></div>
+          <div class="w-9 h-9 rounded-full border-2" style="border-color:#0b3e2e;background:linear-gradient(135deg,#f59e0b,#ef4444);"></div>
+          <div class="w-9 h-9 rounded-full border-2" style="border-color:#0b3e2e;background:linear-gradient(135deg,#6366f1,#8b5cf6);"></div>
+          <div class="w-9 h-9 rounded-full border-2" style="border-color:#0b3e2e;background:linear-gradient(135deg,#ec4899,#f97316);"></div>
         </div>
         <div>
-          <div class="flex gap-0.5">
-            <span class="text-yellow-400 text-sm">★★★★★</span>
-          </div>
-          <p class="text-white/60 text-xs">Trusted by 50,000+ customers</p>
+          <span class="text-yellow-400 text-sm">★★★★★</span>
+          <p class="text-xs" style="color:rgba(255,255,255,0.45);">Trusted by 50,000+ customers</p>
         </div>
       </div>
     </div>
 
-    <!-- Right: Product visual -->
-    <div class="flex justify-center items-center relative">
-      <!-- Glow ring -->
-      <div class="absolute w-80 h-80 rounded-full opacity-30" style="background: radial-gradient(circle, #14b8a6 0%, transparent 70%);"></div>
+    <!-- RIGHT: light teal panel — bottle sits naturally, no blend mode needed -->
+    <div class="hidden md:flex flex-col justify-center items-center min-h-screen relative">
 
-      <!-- Floating product mockup -->
-      <div class="relative glass rounded-3xl p-8 max-w-xs w-full text-center" style="box-shadow: 0 40px 80px rgba(0,0,0,0.4);">
-        <!-- Product icon -->
-        <div class="w-28 h-28 mx-auto rounded-3xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, #1f9a70, #0d9488);">
-          <svg class="w-16 h-16 text-white opacity-90" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
-          </svg>
-        </div>
+      <!-- Soft glow blob -->
+      <div class="bottle-glow"></div>
 
-        <div class="text-white text-2xl font-black mb-1">Lysulin<sup class="text-xs font-normal opacity-60">®</sup></div>
-        <div class="text-teal-400 text-sm font-semibold mb-4">Daily Blood Sugar Support</div>
-
-        <!-- Pill list -->
-        <div class="space-y-2 text-left mb-6">
-          <div class="flex items-center gap-2 text-white/80 text-sm">
-            <svg class="w-4 h-4 text-teal-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
-            Helps Maintain A1C Levels
-          </div>
-          <div class="flex items-center gap-2 text-white/80 text-sm">
-            <svg class="w-4 h-4 text-teal-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
-            Supports Metabolic Health
-          </div>
-          <div class="flex items-center gap-2 text-white/80 text-sm">
-            <svg class="w-4 h-4 text-teal-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
-            Reduces Glucose Spikes
-          </div>
-        </div>
-
-        <a href="#products" class="btn-primary block w-full py-3 rounded-xl text-sm">Start Your Journey</a>
+      <!-- Stat chips -->
+      <div class="absolute top-24 right-8 rounded-2xl px-4 py-3 text-center z-20" style="background:#ffffff;border:1px solid #e0f0e8;box-shadow:0 8px 32px rgba(26,107,60,0.1);animation:drift 9s ease-in-out infinite alternate;">
+        <div class="text-2xl font-black" style="color:#0b3e2e;">40<span style="color:#1f9a70;">+</span></div>
+        <div class="text-xs" style="color:#5a8a6a;">Years Research</div>
+      </div>
+      <div class="absolute top-24 left-8 rounded-2xl px-4 py-3 text-center z-20" style="background:#ffffff;border:1px solid #e0f0e8;box-shadow:0 8px 32px rgba(26,107,60,0.1);animation:drift 11s ease-in-out infinite alternate-reverse;">
+        <div class="text-2xl font-black" style="color:#0b3e2e;">7</div>
+        <div class="text-xs" style="color:#5a8a6a;">Patents</div>
+      </div>
+      <div class="absolute bottom-24 left-8 rounded-2xl px-4 py-3 text-center z-20" style="background:#ffffff;border:1px solid #e0f0e8;box-shadow:0 8px 32px rgba(26,107,60,0.1);animation:drift 8s ease-in-out infinite alternate;">
+        <div class="text-2xl font-black" style="color:#0b3e2e;">A1C</div>
+        <div class="text-xs" style="color:#5a8a6a;">Clinically Tracked</div>
       </div>
 
-      <!-- Floating stat chips -->
-      <div class="absolute -top-4 -right-4 glass rounded-2xl px-4 py-3 text-center" style="animation: drift 8s ease-in-out infinite alternate;">
-        <div class="text-2xl font-black text-white">40<span class="text-teal-400">+</span></div>
-        <div class="text-xs text-white/60">Years Research</div>
-      </div>
-      <div class="absolute -bottom-4 -left-4 glass rounded-2xl px-4 py-3 text-center" style="animation: drift 10s ease-in-out infinite alternate-reverse;">
-        <div class="text-2xl font-black text-white">7</div>
-        <div class="text-xs text-white/60">Patents Granted</div>
-      </div>
+      <!-- Bottle — sits naturally on teal background -->
+      <img src="Images/bottle.png.png"
+           alt="Lysulin Supplement Bottle"
+           style="max-height:560px;width:auto;max-width:85%;position:relative;z-index:5;filter:drop-shadow(0 24px 40px rgba(10,60,35,0.15));" />
+
+      <!-- Ground shadow (separate element, no stacking context on bottle) -->
+      <div class="bottle-shadow"></div>
     </div>
 
   </div>
 
   <!-- Scroll indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40 text-xs">
-    <span>Scroll to explore</span>
-    <div class="w-5 h-8 border border-white/20 rounded-full flex items-start justify-center p-1">
-      <div class="w-1 h-2 bg-white/40 rounded-full" style="animation: bounce 1.5s ease infinite;"></div>
+  <div class="absolute bottom-8 left-1/4 -translate-x-1/2 flex flex-col items-center gap-2 text-xs" style="color:rgba(255,255,255,0.35);">
+    <span>Scroll</span>
+    <div class="w-5 h-8 rounded-full flex items-start justify-center p-1" style="border:1px solid rgba(255,255,255,0.2);">
+      <div class="w-1 h-2 rounded-full" style="background:rgba(255,255,255,0.35);animation:bounce 1.5s ease infinite;"></div>
     </div>
   </div>
 </section>
@@ -1056,10 +1056,50 @@
      SCRIPTS
 ============================================================ -->
 <script>
-  // Nav scroll effect
+  // Nav scroll effect — starts transparent over dark hero, solidifies on scroll
   const navbar = document.getElementById('navbar');
+  const navLogo = document.querySelector('.nav-logo');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const hamburger = document.getElementById('hamburger');
   window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
+    const scrolled = window.scrollY > 60;
+    navbar.classList.toggle('scrolled', scrolled);
+    navLogo.style.color = scrolled ? '#fff' : '#0b3e2e';
+    navLinks.forEach(l => l.style.color = scrolled ? 'rgba(255,255,255,0.8)' : '#126349');
+    hamburger.style.color = scrolled ? '#fff' : '#0b3e2e';
+  });
+
+  // Rising bubbles on dark hero panel
+  const bubbleContainer = document.getElementById('bubble-container');
+  const bubbleData = [
+    {size:8,  left:8,  dur:7,  delay:0,   drift:'8px'},
+    {size:14, left:18, dur:10, delay:1.5, drift:'-12px'},
+    {size:6,  left:28, dur:8,  delay:3,   drift:'10px'},
+    {size:18, left:38, dur:12, delay:0.5, drift:'-8px'},
+    {size:10, left:48, dur:9,  delay:2,   drift:'14px'},
+    {size:7,  left:12, dur:11, delay:4,   drift:'-6px'},
+    {size:22, left:22, dur:14, delay:1,   drift:'10px'},
+    {size:12, left:32, dur:8,  delay:5,   drift:'-10px'},
+    {size:5,  left:42, dur:7,  delay:2.5, drift:'8px'},
+    {size:16, left:5,  dur:13, delay:3.5, drift:'-14px'},
+    {size:9,  left:35, dur:10, delay:6,   drift:'6px'},
+    {size:20, left:45, dur:11, delay:0.8, drift:'-12px'},
+    {size:7,  left:15, dur:9,  delay:4.5, drift:'10px'},
+    {size:13, left:25, dur:12, delay:7,   drift:'-8px'},
+    {size:11, left:50, dur:8,  delay:1.2, drift:'12px'},
+  ];
+  bubbleData.forEach(b => {
+    const el = document.createElement('div');
+    el.className = 'bubble';
+    el.style.cssText = `
+      width:${b.size}px; height:${b.size}px;
+      left:${b.left}%;
+      bottom:-${b.size}px;
+      --dur:${b.dur}s;
+      --delay:${b.delay}s;
+      --drift:${b.drift};
+    `;
+    bubbleContainer.appendChild(el);
   });
 
   // Mobile menu toggle
