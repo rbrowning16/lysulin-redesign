@@ -185,7 +185,7 @@ a { text-decoration: none; color: inherit; }
 /* Filled dark-green "Shop Now" button */
 .overlay-shop-now {
   left: 6.59%;
-  top: 17.8%;
+  top: 20.8%;
   width: 13.2%;
   height: 3.05%;
   background: linear-gradient(135deg, #0b3e2e 0%, #1a9a6e 100%);
@@ -196,7 +196,7 @@ a { text-decoration: none; color: inherit; }
 /* Outlined "How It Works" button */
 .overlay-how-it-works {
   left: 20.73%;
-  top: 17.8%;
+  top: 20.8%;
   width: 13.4%;
   height: 3.05%;
   background: transparent;
