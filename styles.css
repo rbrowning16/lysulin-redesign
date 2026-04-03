@@ -614,6 +614,54 @@ p { color: var(--color-text-soft); }
   height: auto;
 }
 
+/* ═══════════════════════════════════════════
+   OVERLAY BUTTONS (sit on top of wireframe image)
+═══════════════════════════════════════════ */
+.hotspots {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.overlay-btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+  cursor: pointer;
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-bold);
+  font-size: clamp(0.55rem, 1.1vw, 0.95rem);
+  border-radius: var(--radius-pill);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  white-space: nowrap;
+  text-decoration: none;
+}
+.overlay-btn:hover  { opacity: 0.88; transform: translateY(-1px); }
+.overlay-btn:active { transform: translateY(0); }
+
+.overlay-shop-now {
+  left: 6.59%;
+  top: 20.8%;
+  width: 13.2%;
+  height: 3.05%;
+  background: var(--gradient-button);
+  color: var(--color-white);
+  border: none;
+  box-shadow: var(--shadow-green-glow);
+}
+
+.overlay-how-it-works {
+  left: 20.73%;
+  top: 20.8%;
+  width: 13.4%;
+  height: 3.05%;
+  background: transparent;
+  color: var(--color-brand-green-900);
+  border: 2px solid var(--color-brand-green-900);
+}
 
 /* =========================================================
    RESPONSIVE
