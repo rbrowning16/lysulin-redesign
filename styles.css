@@ -270,34 +270,130 @@ p { color: var(--color-text-soft); }
 .mb-10 { margin-bottom: var(--space-10); }
 .mb-12 { margin-bottom: var(--space-12); }
 
-/* ═══════════════════════════════════════════
-   BUTTONS
-═══════════════════════════════════════════ */
+/* =========================================================
+   COMPONENTS
+   ========================================================= */
+
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-family-sans);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-body-sm);
-  height: var(--button-height);
-  padding: 0 var(--space-6);
+  min-height: var(--button-height);
+  padding: 0 var(--button-padding-x);
   border-radius: var(--button-radius);
-  border: 2px solid transparent;
-  cursor: pointer;
-  transition: all var(--transition-base);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background var(--transition-fast),
+    color var(--transition-fast);
   white-space: nowrap;
 }
+.btn:hover  { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
 .btn-primary {
-  background: var(--gradient-button);
   color: var(--color-white);
-  border-color: transparent;
+  background: var(--gradient-button);
   box-shadow: var(--shadow-green-glow);
 }
-.btn-primary:hover {
-  background: var(--gradient-button-hover);
-  box-shadow: var(--shadow-lg);
+.btn-primary:hover { background: var(--gradient-button-hover); }
+
+.btn-secondary {
+  color: var(--color-brand-blue-800);
+  background: var(--color-white);
+  border: 1px solid var(--color-line);
+  box-shadow: var(--shadow-sm);
 }
+
+.card {
+  background: var(--card-bg);
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+  padding: var(--card-padding);
+  box-shadow: var(--card-shadow);
+}
+
+.card-soft {
+  background: var(--gradient-feature);
+  border: 1px solid rgba(207, 234, 245, 0.85);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--badge-height);
+  padding: 0 0.875rem;
+  border-radius: var(--badge-radius);
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  font-size: 0.8125rem;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.02em;
+}
+
+.input {
+  width: 100%;
+  min-height: var(--input-height);
+  padding: 0 var(--input-padding-x);
+  background: var(--input-bg);
+  border: var(--input-border);
+  border-radius: var(--input-radius);
+  color: var(--color-text);
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.input:focus {
+  border-color: var(--color-brand-teal-500);
+  box-shadow: 0 0 0 4px rgba(63, 191, 166, 0.16);
+}
+
+/* =========================================================
+   PAGE SECTIONS
+   ========================================================= */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--gradient-hero);
+  padding: clamp(4rem, 8vw, 7rem) 0;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: auto -8% -18% auto;
+  width: 32rem;
+  height: 32rem;
+  background: radial-gradient(circle, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0) 70%);
+  pointer-events: none;
+}
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+.hero__eyebrow  { display: inline-flex; margin-bottom: var(--space-4); }
+.hero__title    { max-width: 12ch; margin-bottom: var(--space-5); }
+.hero__copy     { max-width: 56ch; margin-bottom: var(--space-8); font-size: var(--font-size-body-lg); }
+.hero__actions  { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+.hero__media    { position: relative; display: flex; justify-content: center; align-items: center; }
+.hero__media-card {
+  width: min(100%, 34rem);
+  border-radius: var(--radius-2xl);
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(255,255,255,0.6);
+  box-shadow: var(--shadow-xl);
+  backdrop-filter: blur(10px);
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.section-surface { background: var(--gradient-section); }
+.section-muted   { background: var(--color-surface-soft); }
 
 /* ═══════════════════════════════════════════
    NAVBAR
