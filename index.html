@@ -1,13 +1,50 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>lysulin-redesign</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lysulin Landing Page</title>
+  <meta name="description" content="Lysulin landing page mockup built to match the approved wireframe exactly." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:opsz@9..40&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="wireframe-shell" aria-label="Lysulin landing page preview">
+      <img
+        class="wireframe-image"
+        src="images/lysulin-wireframe-full.png"
+        alt="Lysulin landing page showing blood sugar instability support, symptom cards, evidence-based formula section, and science-driven ingredients."
+        width="1365"
+        height="2048"
+      />
+
+      <div class="hotspots" aria-hidden="false">
+        <a class="hotspot shop-now" href="https://lysulin.com/lysulin-supplements/" target="_blank" rel="noopener noreferrer" aria-label="Shop Now"></a>
+        <a class="hotspot how-it-works" href="https://lysulin.com/" target="_blank" rel="noopener noreferrer" aria-label="How It Works"></a>
+      </div>
+    </section>
+
+    <section class="sr-copy" aria-label="Accessible page summary">
+      <h1>Blood Sugar Instability Affects More Than You Think</h1>
+      <p>Daily glucose support with patented ingredients proven to help maintain healthy blood sugar.</p>
+      <h2>This is a metabolic issue—not just a glucose issue.</h2>
+      <ul>
+        <li>Energy Crashes</li>
+        <li>Brain Fog</li>
+        <li>Weight Resistance</li>
+      </ul>
+      <h2>An Evidence-Based Formula</h2>
+      <p>Lysulin combines targeted nutrients in a patented formula designed to support healthy blood sugar and metabolic health.</p>
+      <ul>
+        <li>Lysine plus Vitamin C</li>
+        <li>Zinc plus Chromium</li>
+        <li>B-Vitamins</li>
+      </ul>
+      <h2>Science-Driven Ingredients</h2>
+    </section>
+  </main>
+</body>
 </html>
