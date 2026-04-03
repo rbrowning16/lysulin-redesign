@@ -28,7 +28,7 @@
         <a href="#reviews">Reviews</a>
       </nav>
 
-      <a href="#shop" class="btn btn-primary nav-cta">Shop Now</a>
+      <a href="https://lysulin.com/lysulin-supplements/" target="_blank" rel="noopener noreferrer" class="btn btn-primary nav-cta">Shop Now</a>
 
       <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu(this)">
         <span></span><span></span><span></span>
@@ -41,43 +41,27 @@
       <a href="#shop" onclick="closeMenu()">Shop</a>
       <a href="#science" onclick="closeMenu()">Science</a>
       <a href="#reviews" onclick="closeMenu()">Reviews</a>
-      <a href="#shop" class="btn btn-primary" style="margin-top:8px" onclick="closeMenu()">Shop Now</a>
+      <a href="https://lysulin.com/lysulin-supplements/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:8px" onclick="closeMenu()">Shop Now</a>
     </div>
   </header>
 
-  <!-- HERO -->
-  <main>
-    <section class="hero">
-      <div class="container">
-        <div class="hero__grid">
-          <div>
-            <span class="badge hero__eyebrow">Clinically Developed Formula</span>
-            <h1 class="text-hero hero__title">Support healthy blood sugar and metabolic wellness.</h1>
-            <p class="hero__copy">
-              A premium daily formula designed to help support glucose metabolism,
-              sustained energy, and whole-body wellness.
-            </p>
-            <div class="hero__actions">
-              <a href="#shop" class="btn btn-primary">Buy Now</a>
-              <a href="#how-it-works" class="btn btn-secondary">Learn More</a>
-            </div>
-          </div>
+  <!-- WIREFRAME IMAGE (pixel-perfect design) with working buttons -->
+  <main class="page">
+    <section class="wireframe-shell" aria-label="Lysulin landing page">
+      <img
+        class="wireframe-image"
+        src="images/lysulin-wireframe-full.png"
+        alt="Lysulin landing page showing blood sugar instability support, symptom cards, evidence-based formula section, and science-driven ingredients."
+        width="1365"
+        height="2048"
+      />
 
-          <div class="hero__media">
-            <div class="hero__media-card">
-              <img src="images/bottle.png" alt="Lysulin supplement bottle">
-            </div>
-          </div>
-        </div>
+      <!-- Real buttons overlaid exactly over the drawn buttons in the image -->
+      <div class="hotspots">
+        <a class="overlay-btn overlay-shop-now" href="https://lysulin.com/lysulin-supplements/" target="_blank" rel="noopener noreferrer">Shop Now</a>
+        <a class="overlay-btn overlay-how-it-works" href="#how-it-works">How It Works</a>
       </div>
     </section>
-
-    <!-- Sections to be built out next -->
-    <section id="how-it-works"></section>
-    <section id="ingredients"></section>
-    <section id="shop"></section>
-    <section id="science"></section>
-    <section id="reviews"></section>
   </main>
 
   <script>
