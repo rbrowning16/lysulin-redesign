@@ -71,9 +71,9 @@
       border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
-    /* ---------- Hero background ---------- */
+    /* ---------- Hero background — fades to near-white on right so bottle blends ---------- */
     .hero-bg {
-      background: linear-gradient(135deg, #c8e8df 0%, #d8f0ea 35%, #eaf8f4 65%, #f4fdfb 100%);
+      background: linear-gradient(to right, #a8d4cc 0%, #c2e4dd 28%, #daf2ed 52%, #f0faf8 72%, #f8fffe 100%);
     }
 
     /* ---------- Rising bubbles ---------- */
@@ -325,143 +325,77 @@
   <!-- Content wrapper -->
   <div class="relative w-full max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 min-h-screen items-center" style="z-index:4;">
 
-    <!-- LEFT: copy -->
-    <div class="py-32 md:py-0 space-y-7 pr-0 md:pr-10">
+    <!-- LEFT: copy matching reference -->
+    <div class="py-32 md:py-0 space-y-6 pr-0 md:pr-8">
 
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-widest" style="background:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.8);color:#0b5e40;backdrop-filter:blur(8px);">
-        <span class="w-2 h-2 rounded-full animate-pulse" style="background:#1f9a70;"></span>
-        7 Granted Patents · Clinically Studied
-      </div>
-
-      <h1 class="text-5xl md:text-6xl lg:text-[4.2rem] font-black leading-[1.05] tracking-tight" style="color:#0b3e2e;">
-        Blood Sugar<br/>
-        <span style="color:#0e6644;">Instability</span><br/>
-        <span class="text-3xl md:text-4xl font-bold" style="color:#1a7a5c;">Affects More Than You Think</span>
+      <h1 class="font-black leading-tight tracking-tight" style="color:#0b3e2e;">
+        <span class="block text-5xl md:text-6xl lg:text-[3.8rem]">Blood Sugar Instability</span>
+        <span class="block text-3xl md:text-4xl lg:text-[2.4rem] mt-1" style="color:#1a8a60;">Affects More Than You Think</span>
       </h1>
 
-      <p class="text-base md:text-lg leading-relaxed max-w-md" style="color:#1a4a38;">
-        Daily glucose support with patented ingredients clinically proven to <strong>Help Maintain Healthy</strong> Blood Sugar. Built on 40+ years of research.
+      <p class="text-base md:text-lg leading-relaxed max-w-lg" style="color:#1e4a3a;">
+        Daily Glucose Support with Patented Ingredients<br/>
+        Proven to <strong>Help Maintain Healthy</strong> Blood Sugar.
       </p>
 
-      <div class="flex flex-wrap gap-3 text-sm font-medium" style="color:#0e5c3a;">
-        <span class="flex items-center gap-1.5">
-          <svg class="w-4 h-4" style="color:#1f9a70;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
+      <div class="flex flex-wrap gap-4 pt-1">
+        <a href="#products" class="btn-primary px-8 py-3.5 rounded-xl text-base inline-block font-bold">Shop Now</a>
+        <a href="#how-it-works" class="btn-outline px-8 py-3.5 rounded-xl text-base inline-block font-semibold" style="background:rgba(255,255,255,0.5);">How It Works</a>
+      </div>
+
+      <div class="flex flex-wrap gap-6 text-sm font-semibold pt-1" style="color:#1a5c40;">
+        <span class="flex items-center gap-2">
+          <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" style="color:#1f9a70;"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
           Clinically Studied
         </span>
-        <span class="flex items-center gap-1.5">
-          <svg class="w-4 h-4" style="color:#1f9a70;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <span class="flex items-center gap-2">
+          <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:#1f9a70;"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
           Patented Formula
         </span>
       </div>
-
-      <div class="flex flex-wrap gap-4">
-        <a href="#products" class="btn-primary px-8 py-4 rounded-2xl text-base inline-block font-bold">Shop Now</a>
-        <a href="#how-it-works" class="btn-outline px-8 py-4 rounded-2xl text-base inline-block font-semibold transition-all" style="background:rgba(255,255,255,0.4);">How It Works</a>
-      </div>
-
-      <div class="flex items-center gap-4 pt-2">
-        <div class="flex -space-x-2">
-          <div class="w-9 h-9 rounded-full border-2 border-white" style="background:linear-gradient(135deg,#4ade80,#2dd4bf);"></div>
-          <div class="w-9 h-9 rounded-full border-2 border-white" style="background:linear-gradient(135deg,#f59e0b,#ef4444);"></div>
-          <div class="w-9 h-9 rounded-full border-2 border-white" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);"></div>
-          <div class="w-9 h-9 rounded-full border-2 border-white" style="background:linear-gradient(135deg,#ec4899,#f97316);"></div>
-        </div>
-        <div>
-          <span class="text-yellow-500 text-sm">★★★★★</span>
-          <p class="text-xs" style="color:#3a6a58;">Trusted by 50,000+ customers</p>
-        </div>
-      </div>
     </div>
 
-    <!-- RIGHT: science visualization panel -->
-    <div class="hidden md:flex flex-col justify-center items-center min-h-screen relative">
+    <!-- RIGHT: real bottle photo + 3D swoosh ribbon -->
+    <div class="hidden md:flex flex-col justify-center items-center min-h-screen relative" style="overflow:visible;">
 
-      <!-- Decorative orbs -->
-      <div style="position:absolute;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,0.5) 0%,rgba(200,240,228,0.08) 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;"></div>
-      <div style="position:absolute;width:180px;height:180px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.5);top:12%;right:8%;pointer-events:none;animation:drift 12s ease-in-out infinite alternate;"></div>
-      <div style="position:absolute;width:90px;height:90px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.4);bottom:18%;left:6%;pointer-events:none;animation:drift 9s ease-in-out infinite alternate-reverse;"></div>
-      <div style="position:absolute;width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.28);top:22%;left:10%;pointer-events:none;"></div>
-      <div style="position:absolute;width:20px;height:20px;border-radius:50%;background:rgba(45,212,191,0.45);bottom:28%;right:10%;pointer-events:none;animation:drift 7s ease-in-out infinite alternate;"></div>
+      <!-- Scattered bubble decorations (static, like reference) -->
+      <div style="position:absolute;width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,0.5);border:2px solid rgba(255,255,255,0.75);top:20%;left:8%;pointer-events:none;"></div>
+      <div style="position:absolute;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.45);border:1.5px solid rgba(255,255,255,0.7);top:32%;right:4%;pointer-events:none;"></div>
+      <div style="position:absolute;width:18px;height:18px;border-radius:50%;background:rgba(180,230,215,0.65);top:15%;right:12%;pointer-events:none;"></div>
+      <div style="position:absolute;width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,0.55);bottom:32%;left:5%;pointer-events:none;"></div>
+      <div style="position:absolute;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.35);border:1.5px solid rgba(255,255,255,0.6);bottom:24%;right:6%;pointer-events:none;"></div>
+      <div style="position:absolute;width:12px;height:12px;border-radius:50%;background:rgba(45,212,191,0.5);bottom:42%;left:14%;pointer-events:none;"></div>
 
-      <!-- ── MAIN GLASS CARD: Blood Sugar Chart ── -->
-      <div style="background:rgba(255,255,255,0.62);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1.5px solid rgba(255,255,255,0.9);border-radius:28px;padding:28px 32px 24px;box-shadow:0 24px 60px rgba(10,60,40,0.13),0 4px 16px rgba(10,60,40,0.06);width:340px;position:relative;z-index:6;animation:drift 14s ease-in-out infinite alternate;">
-        <!-- Card header -->
-        <div class="flex items-center justify-between mb-4">
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-widest" style="color:#1f9a70;">Clinical Data</p>
-            <h3 class="text-lg font-black" style="color:#0b3e2e;">Blood Sugar Stability</h3>
-          </div>
-          <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full" style="background:#f0fdf6;border:1px solid #bbf7d0;">
-            <span class="w-2 h-2 rounded-full animate-pulse" style="background:#22c55e;"></span>
-            <span class="text-xs font-semibold" style="color:#16a34a;">Live Study</span>
-          </div>
-        </div>
-        <!-- SVG Chart -->
-        <svg viewBox="0 0 300 150" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;overflow:visible;">
-          <defs>
-            <linearGradient id="stableAreaGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#1f9a70" stop-opacity="0.22"/>
-              <stop offset="100%" stop-color="#1f9a70" stop-opacity="0.0"/>
-            </linearGradient>
-            <linearGradient id="unstableAreaGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#f97316" stop-opacity="0.12"/>
-              <stop offset="100%" stop-color="#f97316" stop-opacity="0.0"/>
-            </linearGradient>
-          </defs>
-          <!-- Y labels -->
-          <text x="0" y="18"  font-size="9" fill="rgba(11,62,46,0.4)" font-family="Inter,sans-serif">High</text>
-          <text x="0" y="80"  font-size="9" fill="rgba(11,62,46,0.4)" font-family="Inter,sans-serif">Med</text>
-          <text x="0" y="136" font-size="9" fill="rgba(11,62,46,0.4)" font-family="Inter,sans-serif">Low</text>
-          <!-- Grid -->
-          <line x1="24" y1="14"  x2="300" y2="14"  stroke="rgba(11,62,46,0.06)" stroke-width="1" stroke-dasharray="4,3"/>
-          <line x1="24" y1="76"  x2="300" y2="76"  stroke="rgba(11,62,46,0.06)" stroke-width="1" stroke-dasharray="4,3"/>
-          <line x1="24" y1="132" x2="300" y2="132" stroke="rgba(11,62,46,0.06)" stroke-width="1" stroke-dasharray="4,3"/>
-          <!-- X labels -->
-          <text x="24"  y="145" font-size="8.5" fill="rgba(11,62,46,0.38)" font-family="Inter,sans-serif" text-anchor="middle">Wk 1</text>
-          <text x="93"  y="145" font-size="8.5" fill="rgba(11,62,46,0.38)" font-family="Inter,sans-serif" text-anchor="middle">Wk 4</text>
-          <text x="162" y="145" font-size="8.5" fill="rgba(11,62,46,0.38)" font-family="Inter,sans-serif" text-anchor="middle">Wk 8</text>
-          <text x="231" y="145" font-size="8.5" fill="rgba(11,62,46,0.38)" font-family="Inter,sans-serif" text-anchor="middle">Wk 12</text>
-          <text x="298" y="145" font-size="8.5" fill="rgba(11,62,46,0.38)" font-family="Inter,sans-serif" text-anchor="middle">Wk 16</text>
-          <!-- Unstable line (dashed orange) -->
-          <path d="M24,80 C36,32 50,122 66,58 C78,18 90,128 106,66 C118,24 132,120 150,60 C164,22 178,118 196,64 C210,26 226,110 246,58 C260,24 278,105 298,60" stroke="#f97316" stroke-width="1.8" fill="none" opacity="0.5" stroke-dasharray="5,3"/>
-          <path d="M24,80 C36,32 50,122 66,58 C78,18 90,128 106,66 C118,24 132,120 150,60 C164,22 178,118 196,64 C210,26 226,110 246,58 C260,24 278,105 298,60 L298,132 L24,132 Z" fill="url(#unstableAreaGrad)"/>
-          <!-- Stable line (green) -->
-          <path d="M24,86 C52,78 80,94 110,84 C138,74 166,90 196,80 C220,72 256,80 298,74" stroke="#1f9a70" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-          <path d="M24,86 C52,78 80,94 110,84 C138,74 166,90 196,80 C220,72 256,80 298,74 L298,132 L24,132 Z" fill="url(#stableAreaGrad)"/>
-          <!-- Data dots -->
-          <circle cx="24"  cy="86" r="3.5" fill="#1f9a70" stroke="white" stroke-width="2"/>
-          <circle cx="110" cy="84" r="3.5" fill="#1f9a70" stroke="white" stroke-width="2"/>
-          <circle cx="196" cy="80" r="3.5" fill="#1f9a70" stroke="white" stroke-width="2"/>
-          <circle cx="298" cy="74" r="4"   fill="#1f9a70" stroke="white" stroke-width="2.5"/>
-          <!-- End badge -->
-          <rect x="268" y="56" width="34" height="15" rx="5" fill="#1f9a70"/>
-          <text x="285" y="67" text-anchor="middle" font-size="8" font-weight="800" fill="white" font-family="Inter,sans-serif">−18%</text>
-        </svg>
-        <!-- Legend -->
-        <div class="flex items-center justify-between mt-3">
-          <div class="flex items-center gap-4 text-xs" style="color:#4a7a6a;">
-            <span class="flex items-center gap-1.5"><span style="display:inline-block;width:18px;height:2.5px;background:#1f9a70;border-radius:2px;"></span>With Lysulin</span>
-            <span class="flex items-center gap-1.5"><svg width="18" height="4" viewBox="0 0 18 4"><line x1="0" y1="2" x2="18" y2="2" stroke="#f97316" stroke-width="2" stroke-dasharray="4,2" opacity="0.6"/></svg>Without</span>
-          </div>
-          <span class="text-xs font-semibold" style="color:#1f9a70;">p &lt; 0.001 ✓</span>
-        </div>
-      </div>
+      <!-- 3D Green Swoosh ribbon — behind bottle -->
+      <svg style="position:absolute;right:2%;top:5%;width:180px;height:88%;z-index:2;pointer-events:none;" viewBox="0 0 180 520" fill="none">
+        <defs>
+          <linearGradient id="swMain" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stop-color="#156b40"/>
+            <stop offset="50%" stop-color="#22a060"/>
+            <stop offset="100%" stop-color="#34c472"/>
+          </linearGradient>
+          <linearGradient id="swSheen" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stop-color="#22a060" stop-opacity="0"/>
+            <stop offset="60%" stop-color="#5edd96" stop-opacity="0.7"/>
+            <stop offset="100%" stop-color="#7eeaaa" stop-opacity="0.9"/>
+          </linearGradient>
+        </defs>
+        <!-- Main ribbon body — thick curved path -->
+        <path d="M155,510 C140,420 120,320 105,230 C90,145 75,80 88,20"
+              stroke="url(#swMain)" stroke-width="32" fill="none" stroke-linecap="round"/>
+        <!-- Highlight sheen on left edge of ribbon -->
+        <path d="M145,510 C130,420 112,320 98,230 C84,145 70,80 82,20"
+              stroke="url(#swSheen)" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <!-- Arrowhead -->
+        <polygon points="72,14 106,14 89,0" fill="#34c472"/>
+        <polygon points="77,14 101,14 89,6" fill="#7eeaaa" opacity="0.7"/>
+      </svg>
 
-      <!-- ── FLOATING STAT CHIPS ── -->
-      <div style="position:absolute;top:14%;left:2%;background:rgba(255,255,255,0.78);backdrop-filter:blur(16px);border:1.5px solid rgba(255,255,255,0.95);border-radius:20px;padding:14px 18px;box-shadow:0 12px 40px rgba(10,60,40,0.12);animation:drift 10s ease-in-out infinite alternate;z-index:7;">
-        <div class="text-2xl font-black" style="color:#0b3e2e;">−0.5%<span class="text-sm font-semibold ml-1" style="color:#1f9a70;">A1C</span></div>
-        <div class="text-xs mt-0.5" style="color:#5a8a6a;">Average reduction</div>
-      </div>
-      <div style="position:absolute;top:14%;right:2%;background:rgba(255,255,255,0.78);backdrop-filter:blur(16px);border:1.5px solid rgba(255,255,255,0.95);border-radius:20px;padding:14px 18px;box-shadow:0 12px 40px rgba(10,60,40,0.12);animation:drift 11s ease-in-out infinite alternate-reverse;z-index:7;">
-        <div class="text-2xl font-black" style="color:#0b3e2e;">7</div>
-        <div class="text-xs mt-0.5" style="color:#5a8a6a;">Granted Patents</div>
-      </div>
-      <div style="position:absolute;bottom:16%;left:4%;background:rgba(255,255,255,0.78);backdrop-filter:blur(16px);border:1.5px solid rgba(255,255,255,0.95);border-radius:20px;padding:14px 18px;box-shadow:0 12px 40px rgba(10,60,40,0.12);animation:drift 8s ease-in-out infinite alternate;z-index:7;">
-        <div class="text-2xl font-black" style="color:#0b3e2e;">50K<span class="text-sm font-semibold" style="color:#1f9a70;">+</span></div>
-        <div class="text-xs mt-0.5" style="color:#5a8a6a;">Happy Customers</div>
-        <div class="text-yellow-400 text-xs mt-0.5">★★★★★</div>
-      </div>
-
+      <!-- Bottle photo — sits naturally on near-white bg, no blend mode needed -->
+      <img src="Images/bottle.png.png"
+           alt="Lysulin Supplement Bottle"
+           style="max-height:560px;width:auto;max-width:80%;position:relative;z-index:5;
+                  filter:drop-shadow(4px 8px 24px rgba(10,60,40,0.13)) drop-shadow(0 2px 6px rgba(10,60,40,0.08));"/>
     </div>
 
   </div>
@@ -504,71 +438,129 @@
 <!-- ============================================================
      PROBLEM SECTION
 ============================================================ -->
-<section class="py-24 px-6 bg-white" id="how-it-works">
-  <div class="max-w-7xl mx-auto">
+<section class="py-20 px-6 bg-white" id="how-it-works">
+  <div class="max-w-6xl mx-auto">
 
-    <div class="text-center mb-16 reveal">
-      <div class="inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest text-brand-600 mb-4" style="background: #f0faf6; border: 1px solid #aee4cf;">
-        The Root Cause
-      </div>
-      <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-        This is a <span class="text-brand-600">metabolic issue</span> —<br class="hidden md:block"/> not just a glucose number.
+    <div class="text-center mb-12 reveal">
+      <h2 class="text-3xl md:text-4xl font-black mb-0" style="color:#1a2e28;">
+        This is a <em style="font-style:italic;color:#0b3e2e;">metabolic issue</em> — not just a glucose issue.
       </h2>
-      <p class="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
-        When blood sugar fluctuates, the effects ripple through your entire body. You feel it every day — even if your doctor hasn't flagged it yet.
-      </p>
     </div>
 
-    <!-- Problem cards -->
+    <!-- Photo-style cards matching reference -->
     <div class="grid md:grid-cols-3 gap-6 mb-16">
-      <div class="reveal bg-gray-50 rounded-3xl p-8 border border-gray-100 hover:border-brand-200 transition-colors">
-        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg,#fef3c7,#fde68a);">
-          <svg class="w-8 h-8 text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+      <!-- Card 1: Energy Crashes -->
+      <div class="reveal bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-md hover:shadow-lg transition-shadow">
+        <!-- Illustrated photo area -->
+        <div style="height:210px;background:linear-gradient(160deg,#c8dce8 0%,#a8c4d4 50%,#8fb0c5 100%);position:relative;overflow:hidden;">
+          <!-- Room/couch suggestion -->
+          <div style="position:absolute;bottom:0;left:0;right:0;height:55px;background:linear-gradient(180deg,transparent,rgba(100,140,160,0.4));"></div>
+          <!-- Seated tired woman SVG -->
+          <svg viewBox="0 0 300 210" style="width:100%;height:100%;position:absolute;top:0;left:0;">
+            <!-- Soft light blob -->
+            <ellipse cx="150" cy="80" rx="90" ry="70" fill="rgba(255,255,255,0.12)"/>
+            <!-- Body/torso -->
+            <ellipse cx="148" cy="168" rx="38" ry="22" fill="#8a6a5a" opacity="0.6"/>
+            <path d="M112,155 Q148,140 185,155 L190,210 L108,210 Z" fill="#c4a088" opacity="0.85"/>
+            <!-- Head -->
+            <ellipse cx="148" cy="118" rx="26" ry="30" fill="#d4a882"/>
+            <!-- Hair -->
+            <path d="M122,108 Q148,88 175,108 Q180,95 148,88 Q116,95 122,108 Z" fill="#5a3a28"/>
+            <path d="M122,108 Q115,115 116,128" stroke="#5a3a28" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <path d="M174,108 Q181,115 180,128" stroke="#5a3a28" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <!-- Head tilted/resting on hand -->
+            <path d="M148,148 Q155,145 162,148" stroke="#c49070" stroke-width="2" fill="none"/>
+            <!-- Arm resting, elbow on knee -->
+            <path d="M112,160 Q95,175 88,195" stroke="#c4a088" stroke-width="14" stroke-linecap="round" fill="none"/>
+            <!-- Hand under chin -->
+            <path d="M88,195 Q94,200 100,196" stroke="#c4a088" stroke-width="10" stroke-linecap="round" fill="none"/>
+            <path d="M100,196 Q110,186 118,148" stroke="#c4a088" stroke-width="12" stroke-linecap="round" fill="none"/>
+            <!-- Eyes closed/tired -->
+            <path d="M138,117 Q142,114 147,117" stroke="#7a5040" stroke-width="1.5" fill="none"/>
+            <path d="M150,117 Q154,114 159,117" stroke="#7a5040" stroke-width="1.5" fill="none"/>
+            <!-- Subtle shadow at bottom -->
+            <ellipse cx="150" cy="208" rx="45" ry="6" fill="rgba(0,0,0,0.12)"/>
           </svg>
         </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-3">Energy Crashes</h3>
-        <p class="text-gray-500 leading-relaxed">Post-meal fatigue, mid-afternoon slumps, and waking up exhausted — your cells can't convert glucose into fuel efficiently.</p>
-        <div class="mt-6 space-y-2">
-          <div class="flex justify-between text-xs text-gray-400 mb-1"><span>Affects adults 35+</span><span>74%</span></div>
-          <div class="w-full bg-gray-200 rounded-full h-1.5"><div class="h-1.5 rounded-full progress-fill" style="--target-width:74%; background: linear-gradient(135deg,#f59e0b,#ef4444);"></div></div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold mb-1" style="color:#1a2e28;">Energy Crashes</h3>
+          <div style="color:#f59e0b;font-size:1rem;letter-spacing:1px;">★★★★★</div>
         </div>
       </div>
 
-      <div class="reveal bg-gray-50 rounded-3xl p-8 border border-gray-100 hover:border-brand-200 transition-colors" style="transition-delay:0.15s">
-        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg,#ede9fe,#ddd6fe);">
-          <svg class="w-8 h-8 text-violet-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+      <!-- Card 2: Brain Fog -->
+      <div class="reveal bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-md hover:shadow-lg transition-shadow" style="transition-delay:0.15s">
+        <div style="height:210px;background:linear-gradient(160deg,#c5cfe0 0%,#a8b8cc 50%,#90a4bc 100%);position:relative;overflow:hidden;">
+          <div style="position:absolute;bottom:0;left:0;right:0;height:55px;background:linear-gradient(180deg,transparent,rgba(90,110,140,0.3));"></div>
+          <!-- Middle-aged man, hand to temple SVG -->
+          <svg viewBox="0 0 300 210" style="width:100%;height:100%;position:absolute;top:0;left:0;">
+            <ellipse cx="150" cy="80" rx="85" ry="65" fill="rgba(255,255,255,0.1)"/>
+            <!-- Body -->
+            <path d="M110,158 Q150,143 190,158 L196,210 L104,210 Z" fill="#7a8898" opacity="0.85"/>
+            <!-- Collar/shirt -->
+            <path d="M132,158 L150,170 L168,158" fill="#9aacba" opacity="0.7"/>
+            <!-- Head -->
+            <ellipse cx="150" cy="115" rx="28" ry="32" fill="#c8a882"/>
+            <!-- Hair (receding/short) -->
+            <path d="M122,105 Q150,85 178,105 Q182,92 150,86 Q118,92 122,105 Z" fill="#5a4a38" opacity="0.9"/>
+            <!-- Ear -->
+            <ellipse cx="178" cy="116" rx="5" ry="7" fill="#be9c72"/>
+            <!-- Hand raised to temple -->
+            <path d="M190,158 Q200,145 192,130 Q186,118 178,116" stroke="#c8a882" stroke-width="13" stroke-linecap="round" fill="none"/>
+            <!-- Fingers at temple -->
+            <path d="M178,116 Q174,110 170,108" stroke="#c8a882" stroke-width="7" stroke-linecap="round" fill="none"/>
+            <path d="M178,116 Q173,114 169,114" stroke="#c8a882" stroke-width="6" stroke-linecap="round" fill="none"/>
+            <!-- Stressed expression -->
+            <path d="M138,110 Q142,107 147,110" stroke="#9a7050" stroke-width="1.5" fill="none"/>
+            <path d="M153,110 Q157,107 162,110" stroke="#9a7050" stroke-width="1.5" fill="none"/>
+            <path d="M143,125 Q150,122 157,125" stroke="#9a7050" stroke-width="1.5" fill="none"/>
+            <!-- Shadow -->
+            <ellipse cx="150" cy="208" rx="48" ry="6" fill="rgba(0,0,0,0.1)"/>
           </svg>
         </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-3">Brain Fog</h3>
-        <p class="text-gray-500 leading-relaxed">Difficulty concentrating, poor memory recall, and mental fatigue. The brain consumes 20% of your glucose — instability hits it hardest.</p>
-        <div class="mt-6 space-y-2">
-          <div class="flex justify-between text-xs text-gray-400 mb-1"><span>Linked to glucose spikes</span><span>68%</span></div>
-          <div class="w-full bg-gray-200 rounded-full h-1.5"><div class="h-1.5 rounded-full progress-fill" style="--target-width:68%; background: linear-gradient(135deg,#7c3aed,#a78bfa);"></div></div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold mb-1" style="color:#1a2e28;">Brain Fog</h3>
+          <div style="color:#f59e0b;font-size:1rem;letter-spacing:1px;">★★★★★</div>
         </div>
       </div>
 
-      <div class="reveal bg-gray-50 rounded-3xl p-8 border border-gray-100 hover:border-brand-200 transition-colors" style="transition-delay:0.3s">
-        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg,#fce7f3,#fbcfe8);">
-          <svg class="w-8 h-8 text-pink-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
+      <!-- Card 3: Weight Resistance -->
+      <div class="reveal bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-md hover:shadow-lg transition-shadow" style="transition-delay:0.3s">
+        <div style="height:210px;background:linear-gradient(160deg,#c2d8d0 0%,#a8c8bc 50%,#8cb4a8 100%);position:relative;overflow:hidden;">
+          <div style="position:absolute;bottom:0;left:0;right:0;height:55px;background:linear-gradient(180deg,transparent,rgba(70,110,100,0.3));"></div>
+          <!-- Person measuring waist SVG -->
+          <svg viewBox="0 0 300 210" style="width:100%;height:100%;position:absolute;top:0;left:0;">
+            <ellipse cx="150" cy="80" rx="85" ry="65" fill="rgba(255,255,255,0.12)"/>
+            <!-- Torso/body (cropped waist area shown) -->
+            <path d="M105,80 Q150,68 195,80 L200,210 L100,210 Z" fill="#c4a8a0" opacity="0.8"/>
+            <!-- Waistline -->
+            <path d="M108,138 Q150,126 192,138" stroke="rgba(255,255,255,0.3)" stroke-width="1" fill="none"/>
+            <!-- Measuring tape — horizontal around waist -->
+            <path d="M72,140 Q150,125 228,140" stroke="#e8c870" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.92"/>
+            <!-- Tape markings -->
+            <line x1="95"  y1="135" x2="95"  y2="142" stroke="#c8a848" stroke-width="1.5" opacity="0.8"/>
+            <line x1="112" y1="132" x2="112" y2="139" stroke="#c8a848" stroke-width="1.5" opacity="0.8"/>
+            <line x1="128" y1="130" x2="128" y2="137" stroke="#c8a848" stroke-width="1.5" opacity="0.8"/>
+            <line x1="150" y1="128" x2="150" y2="135" stroke="#c8a848" stroke-width="2" opacity="0.9"/>
+            <line x1="172" y1="130" x2="172" y2="137" stroke="#c8a848" stroke-width="1.5" opacity="0.8"/>
+            <line x1="188" y1="132" x2="188" y2="139" stroke="#c8a848" stroke-width="1.5" opacity="0.8"/>
+            <line x1="205" y1="135" x2="205" y2="142" stroke="#c8a848" stroke-width="1.5" opacity="0.8"/>
+            <!-- Hands holding tape -->
+            <ellipse cx="72"  cy="140" rx="12" ry="9" fill="#c4a890" opacity="0.85"/>
+            <ellipse cx="228" cy="140" rx="12" ry="9" fill="#c4a890" opacity="0.85"/>
+            <!-- Arms suggestion -->
+            <path d="M72,140 Q62,155 68,175" stroke="#c4a890" stroke-width="14" stroke-linecap="round" fill="none"/>
+            <path d="M228,140 Q238,155 232,175" stroke="#c4a890" stroke-width="14" stroke-linecap="round" fill="none"/>
+            <!-- Shadow -->
+            <ellipse cx="150" cy="208" rx="50" ry="6" fill="rgba(0,0,0,0.1)"/>
           </svg>
         </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-3">Weight Resistance</h3>
-        <p class="text-gray-500 leading-relaxed">Elevated insulin signals your body to store fat, not burn it. Stabilizing glucose metabolism is the first step to sustainable weight management.</p>
-        <div class="mt-6 space-y-2">
-          <div class="flex justify-between text-xs text-gray-400 mb-1"><span>Correlated with A1c levels</span><span>81%</span></div>
-          <div class="w-full bg-gray-200 rounded-full h-1.5"><div class="h-1.5 rounded-full progress-fill" style="--target-width:81%; background: linear-gradient(135deg,#ec4899,#f97316);"></div></div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold mb-1" style="color:#1a2e28;">Weight Resistance</h3>
+          <div style="color:#f59e0b;font-size:1rem;letter-spacing:1px;">★★★★★</div>
         </div>
       </div>
-    </div>
 
-    <!-- Bridge statement -->
-    <div class="reveal text-center">
-      <p class="text-2xl md:text-3xl font-bold text-gray-900 max-w-3xl mx-auto leading-relaxed">
-        Lysulin was developed specifically to address <span class="text-brand-600">the metabolic root</span> — not just mask the symptoms.
-      </p>
     </div>
 
   </div>
@@ -576,23 +568,142 @@
 
 
 <!-- ============================================================
-     HOW IT WORKS
+     EVIDENCE-BASED FORMULA — 2-column like reference
 ============================================================ -->
-<section class="py-24 px-6" style="background: linear-gradient(180deg, #f0faf6 0%, #ffffff 100%);">
-  <div class="max-w-7xl mx-auto">
+<section class="py-20 px-6" style="background:linear-gradient(160deg,#d8f2ec 0%,#e8f8f4 50%,#f0fdf9 100%);" id="how-it-works-formula">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
 
-    <div class="text-center mb-16 reveal">
-      <div class="inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest text-brand-600 mb-4" style="background: #f0faf6; border: 1px solid #aee4cf;">
-        The Science
+      <!-- LEFT: shield + ingredients -->
+      <div class="reveal space-y-6">
+        <!-- Shield icon -->
+        <div class="flex items-center gap-4">
+          <div style="width:80px;height:90px;flex-shrink:0;">
+            <svg viewBox="0 0 80 90" fill="none" style="width:80px;height:90px;">
+              <defs>
+                <linearGradient id="shieldGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#3dd68c"/>
+                  <stop offset="100%" stop-color="#1a8a52"/>
+                </linearGradient>
+              </defs>
+              <path d="M40,4 L72,18 L72,46 C72,64 57,78 40,86 C23,78 8,64 8,46 L8,18 Z" fill="url(#shieldGrad)"/>
+              <path d="M40,8 L68,20 L68,46 C68,62 55,74 40,82 C25,74 12,62 12,46 L12,20 Z" fill="rgba(255,255,255,0.12)"/>
+              <!-- Checkmark -->
+              <path d="M24,44 L35,56 L58,32" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+          <div>
+            <h2 class="text-3xl md:text-4xl font-black" style="color:#0b3e2e;">An Evidence-Based Formula</h2>
+          </div>
+        </div>
+
+        <p class="text-base leading-relaxed" style="color:#2a5a48;">
+          Lysulin combines targeted nutrients in a patented formula designed to...
+        </p>
+
+        <!-- Ingredient rows with arrows -->
+        <div class="space-y-5">
+          <!-- Row 1 -->
+          <div class="flex items-start gap-4">
+            <div class="flex items-center gap-2 flex-shrink-0 w-44">
+              <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" style="color:#1f9a70;"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
+              <div>
+                <span class="font-bold text-sm" style="color:#0b3e2e;">Lysine + Vitamin C</span>
+                <p class="text-xs" style="color:#5a8a70;">add its journey out of the bloodstream</p>
+              </div>
+            </div>
+            <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:#1f9a70;"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            <div>
+              <p class="text-sm font-semibold" style="color:#0b3e2e;">Bind to glucose, <span class="font-normal" style="color:#3a6a58;">aiding its journey out into the bloodstream</span></p>
+            </div>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="flex items-start gap-4">
+            <div class="flex items-center gap-2 flex-shrink-0 w-44">
+              <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" style="color:#1f9a70;"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
+              <div>
+                <span class="font-bold text-sm" style="color:#0b3e2e;">Zinc + Chromium</span>
+                <p class="text-xs" style="color:#5a8a70;">Help support metabolic function</p>
+              </div>
+            </div>
+            <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:#1f9a70;"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            <div>
+              <p class="text-sm" style="color:#0b3e2e;"><span class="font-semibold">Support insulin function</span> and glucose metabolism</p>
+            </div>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="flex items-start gap-4">
+            <div class="flex items-center gap-2 flex-shrink-0 w-44">
+              <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" style="color:#1f9a70;"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
+              <div>
+                <span class="font-bold text-sm" style="color:#0b3e2e;">B-Vitamins</span>
+                <p class="text-xs" style="color:#5a8a70;">Proven energy support</p>
+              </div>
+            </div>
+            <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:#1f9a70;"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            <div>
+              <p class="text-sm" style="color:#0b3e2e;"><span class="font-semibold">Fuel cellular energy</span> at the metabolic level</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">An Evidence-Based Formula</h2>
+
+      <!-- RIGHT: bottle + scattered supplement items -->
+      <div class="reveal relative flex items-center justify-center" style="min-height:420px;">
+        <!-- Scatter: lemon SVG -->
+        <svg style="position:absolute;bottom:18%;left:2%;width:70px;height:70px;z-index:2;" viewBox="0 0 70 70" fill="none">
+          <ellipse cx="35" cy="35" rx="28" ry="22" fill="#f5c842" opacity="0.9"/>
+          <ellipse cx="35" cy="35" rx="22" ry="16" fill="#f7d860" opacity="0.7"/>
+          <path d="M35,13 Q48,35 35,57" stroke="#e8b020" stroke-width="1" fill="none" opacity="0.5"/>
+          <ellipse cx="35" cy="35" rx="5" ry="10" fill="#f5c842" opacity="0.3" transform="rotate(-30 35 35)"/>
+        </svg>
+
+        <!-- Scatter: loose capsules -->
+        <svg style="position:absolute;bottom:28%;left:8%;width:48px;height:20px;z-index:3;transform:rotate(-25deg);" viewBox="0 0 48 20" fill="none">
+          <rect x="1" y="1" width="46" height="18" rx="9" fill="white" opacity="0.88"/>
+          <rect x="1" y="1" width="24" height="18" rx="9" fill="#2db8a0" opacity="0.85"/>
+        </svg>
+        <svg style="position:absolute;bottom:20%;left:14%;width:40px;height:18px;z-index:3;transform:rotate(15deg);" viewBox="0 0 40 18" fill="none">
+          <rect x="1" y="1" width="38" height="16" rx="8" fill="white" opacity="0.85"/>
+          <rect x="1" y="1" width="20" height="16" rx="8" fill="#14b8a6" opacity="0.8"/>
+        </svg>
+
+        <!-- Scatter: powder jar suggestion -->
+        <div style="position:absolute;bottom:8%;right:6%;width:52px;height:52px;border-radius:8px;background:rgba(255,255,255,0.75);border:1.5px solid rgba(255,255,255,0.9);box-shadow:0 4px 16px rgba(10,60,40,0.1);z-index:2;display:flex;align-items:center;justify-content:center;">
+          <div style="width:36px;height:36px;border-radius:6px;background:linear-gradient(135deg,#e8f5f0,#c8e8e0);"></div>
+        </div>
+
+        <!-- Bubble scatter -->
+        <div style="position:absolute;top:12%;right:5%;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.5);border:1.5px solid rgba(255,255,255,0.8);"></div>
+        <div style="position:absolute;top:22%;left:5%;width:18px;height:18px;border-radius:50%;background:rgba(180,235,215,0.65);"></div>
+        <div style="position:absolute;top:35%;right:8%;width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,0.6);"></div>
+
+        <!-- Bottle photo — blends on light teal bg -->
+        <img src="Images/bottle.png.png" alt="Lysulin"
+             style="max-height:400px;width:auto;position:relative;z-index:5;
+                    filter:drop-shadow(4px 8px 28px rgba(10,60,40,0.14));"/>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     HOW IT WORKS (3-step) — kept as Science-Driven section
+============================================================ -->
+<section class="py-24 px-6 bg-white" id="how-it-works">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 reveal">
+      <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">Science-Driven <span style="color:#1f9a70;">Ingredients.</span></h2>
       <p class="text-xl text-gray-500 max-w-2xl mx-auto">
-        Three clinically validated nutrients working together to target blood sugar from every angle.
+        Every ingredient was selected based on peer-reviewed research and combined in clinically effective ratios.
       </p>
     </div>
 
     <div class="grid md:grid-cols-3 gap-8 relative">
-      <!-- Connector line (desktop) -->
       <div class="hidden md:block absolute top-14 left-1/4 right-1/4 h-0.5 opacity-20" style="background: linear-gradient(90deg,#1f9a70,#0d9488);"></div>
 
       <!-- Step 1 -->
