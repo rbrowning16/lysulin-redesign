@@ -188,9 +188,9 @@ a { text-decoration: none; color: inherit; }
   top: 17.8%;
   width: 13.2%;
   height: 3.05%;
-  background: #0b3e2e;
+  background: linear-gradient(135deg, #0b3e2e 0%, #1a9a6e 100%);
   color: #ffffff;
-  border: 2px solid #0b3e2e;
+  border: none;
 }
 
 /* Outlined "How It Works" button */
