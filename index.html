@@ -7,15 +7,15 @@
   <meta name="description" content="Lysulin combines clinically studied, patented ingredients to help maintain healthy blood sugar levels and support metabolic health." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:opsz@9..40&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:opsz@9..40&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- ═══ NAVBAR ═══ -->
+  <!-- NAVBAR -->
   <header class="navbar">
     <div class="nav-inner">
-      <a href="#home" class="nav-logo" aria-label="Lysulin home">
+      <a href="#" class="nav-logo" aria-label="Lysulin home">
         <div class="logo-mark">L</div>
         <span class="logo-text">Lysulin<sup>®</sup></span>
       </a>
@@ -28,7 +28,7 @@
         <a href="#reviews">Reviews</a>
       </nav>
 
-      <a href="#shop" class="btn btn-primary nav-cta">Shop Now</a>
+      <a href="https://lysulin.com/lysulin-supplements/" target="_blank" rel="noopener noreferrer" class="btn btn-primary nav-cta">Shop Now</a>
 
       <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu(this)">
         <span></span><span></span><span></span>
@@ -41,65 +41,28 @@
       <a href="#shop" onclick="closeMenu()">Shop</a>
       <a href="#science" onclick="closeMenu()">Science</a>
       <a href="#reviews" onclick="closeMenu()">Reviews</a>
-      <a href="#shop" class="btn btn-primary" style="margin-top:8px" onclick="closeMenu()">Shop Now</a>
+      <a href="https://lysulin.com/lysulin-supplements/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:8px" onclick="closeMenu()">Shop Now</a>
     </div>
   </header>
 
-  <!-- ═══ HERO ═══ -->
-  <section class="hero" id="home">
-    <div class="hero-inner">
+  <!-- WIREFRAME IMAGE (pixel-perfect design) with working buttons -->
+  <main class="page">
+    <section class="wireframe-shell" aria-label="Lysulin landing page">
+      <img
+        class="wireframe-image"
+        src="images/lysulin-wireframe-full.png"
+        alt="Lysulin landing page showing blood sugar instability support, symptom cards, evidence-based formula section, and science-driven ingredients."
+        width="1365"
+        height="2048"
+      />
 
-      <div class="hero-copy">
-        <h1 class="hero-heading">
-          Blood Sugar Instability
-          <span class="hero-sub">Affects More Than You Think</span>
-        </h1>
-        <p class="hero-body">
-          Daily Glucose Support with Patented Ingredients<br>
-          Proven to <strong>Help Maintain Healthy</strong> Blood Sugar.
-        </p>
-        <div class="hero-btns">
-          <a href="#shop" class="btn btn-primary">Shop Now</a>
-          <a href="#how-it-works" class="btn btn-outline">How It Works</a>
-        </div>
-        <div class="hero-badges">
-          <span class="badge">
-            <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9l4.5 4.5 7.5-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Clinically Studied
-          </span>
-          <span class="badge">
-            <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="7.5" stroke="currentColor" stroke-width="1.8"/><path d="M6 9l2.5 2.5L13 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Patented Formula
-          </span>
-        </div>
+      <!-- Clickable hotspots over the wireframe buttons -->
+      <div class="hotspots" aria-hidden="false">
+        <a class="hotspot shop-now"     href="https://lysulin.com/lysulin-supplements/" target="_blank" rel="noopener noreferrer" aria-label="Shop Now"></a>
+        <a class="hotspot how-it-works" href="https://lysulin.com/" target="_blank" rel="noopener noreferrer" aria-label="How It Works"></a>
       </div>
-
-      <div class="hero-visual">
-        <svg class="hero-arrow" viewBox="0 0 160 300" fill="none" aria-hidden="true">
-          <defs>
-            <linearGradient id="arrowGrad" x1="0" y1="1" x2="1" y2="0">
-              <stop offset="0%" stop-color="#1acc7a"/>
-              <stop offset="100%" stop-color="#0a7a48"/>
-            </linearGradient>
-          </defs>
-          <path d="M 20 290 C 15 210 50 130 90 70 C 115 35 145 15 158 5"
-                stroke="url(#arrowGrad)" stroke-width="22" stroke-linecap="round" fill="none"/>
-          <path d="M 145 2 L 162 6 L 157 24"
-                stroke="url(#arrowGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-
-        <div class="bottle-halo"></div>
-
-        <img
-          class="hero-bottle"
-          src="images/bottle.png"
-          alt="Lysulin supplement bottle"
-        />
-      </div>
-    </div>
-  </section>
-
-  <!-- More sections will be added next -->
+    </section>
+  </main>
 
   <script>
     window.addEventListener('scroll', () => {
