@@ -151,19 +151,124 @@
   --z-overlay: 500;
 }
 
-/* ═══════════════════════════════════════════
-   RESET & BASE
-═══════════════════════════════════════════ */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* =========================================================
+   BASE / RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
 html { scroll-behavior: smooth; }
+
+html, body { margin: 0; padding: 0; }
+
 body {
   font-family: var(--font-family-body);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
   color: var(--color-text);
   background: var(--color-white);
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-img { display: block; max-width: 100%; }
-a { text-decoration: none; color: inherit; }
+
+img, picture, video, canvas, svg { display: block; max-width: 100%; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast), opacity var(--transition-fast);
+}
+
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; border: 0; background: none; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+p, h1, h2, h3, h4, h5, h6 { margin: 0; }
+
+::selection { background: rgba(47, 175, 116, 0.18); }
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  color: var(--color-heading);
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-heading);
+  font-weight: var(--font-weight-black);
+}
+
+h1 { font-size: var(--font-size-h1); }
+h2 { font-size: var(--font-size-h2); }
+h3 { font-size: var(--font-size-h3); }
+h4 { font-size: var(--font-size-h4); }
+h5 { font-size: var(--font-size-h5); }
+
+p { color: var(--color-text-soft); }
+
+.text-hero {
+  font-size: var(--font-size-hero);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  font-weight: var(--font-weight-black);
+}
+.text-body-lg { font-size: var(--font-size-body-lg); }
+.text-body-sm { font-size: var(--font-size-body-sm); }
+.text-caption {
+  font-size: var(--font-size-caption);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-brand-green { color: var(--color-brand-green-500); }
+.text-brand-blue  { color: var(--color-brand-blue-600); }
+.text-muted       { color: var(--color-text-muted); }
+.text-soft        { color: var(--color-text-soft); }
+.text-heading     { color: var(--color-heading); }
+.text-white       { color: var(--color-white); }
+
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+
+.container {
+  width: min(100% - 2rem, var(--container-xl));
+  margin-inline: auto;
+}
+.container-sm {
+  width: min(100% - 2rem, var(--container-md));
+  margin-inline: auto;
+}
+.section       { padding: var(--section-padding-y) 0; }
+.section-tight { padding: var(--section-padding-y-tight) 0; }
+
+.grid  { display: grid; gap: var(--space-8); }
+.flex  { display: flex; }
+.flex-col { display: flex; flex-direction: column; }
+
+.items-center    { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center  { justify-content: center; }
+.text-center     { text-align: center; }
+
+.gap-2  { gap: var(--space-2); }
+.gap-3  { gap: var(--space-3); }
+.gap-4  { gap: var(--space-4); }
+.gap-6  { gap: var(--space-6); }
+.gap-8  { gap: var(--space-8); }
+.gap-10 { gap: var(--space-10); }
+
+.mb-2  { margin-bottom: var(--space-2); }
+.mb-3  { margin-bottom: var(--space-3); }
+.mb-4  { margin-bottom: var(--space-4); }
+.mb-6  { margin-bottom: var(--space-6); }
+.mb-8  { margin-bottom: var(--space-8); }
+.mb-10 { margin-bottom: var(--space-10); }
+.mb-12 { margin-bottom: var(--space-12); }
 
 /* ═══════════════════════════════════════════
    BUTTONS
